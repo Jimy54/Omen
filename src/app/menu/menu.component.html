@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Animated &amp; Sticky Side Navigation Bar Menu</title>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+
+    #snav.en {
+      left: 0;
+      text-align: left;
+
+    }
+
+    #snav.en li span {
+      left: -100px;
+    }
+
+    #snav.en li a:hover span {
+      left: 35px;
+    }
+
+    #snav.ar {
+      right: 0;
+      text-align: right;
+    }
+
+    #snav.ar li span {
+      right: -100px;
+    }
+
+    #snav.ar li a:hover span {
+      right: 35px;
+    }
+
+
+    #snav {
+      position: fixed;
+      top: 0%;
+      height: 100%;
+      max-height: 100%;
+      bottom: 0%;
+      z-index: 9999;
+      font-size: 18px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    #snav ul {
+      list-style: none;
+    }
+
+    #snav * {
+      margin: 0;
+      padding: 0;
+      outline: 0;
+      transition: all .5s ease;
+      -webkit-transition: all .5s ease;
+      -moz-transition: all .5s ease;
+      -o-transition: all .5s ease;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+
+    }
+
+    #snav li a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      position: relative;
+    }
+
+    #snav .material-icons {
+      vertical-align: top;
+      font-size: 18px;
+      width: 50px;
+      height: 100%;
+      line-height: 50px;
+      text-align: center;
+      position: relative;
+      z-index: 4;
+      padding: 0;
+    }
+
+    #snav li span {
+      font-size: 20px;
+      height: 50px;
+      line-height: 50px;
+      width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      padding: 0 15px;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+      z-index: 3;
+    }
+
+    #snav li a:hover .material-icons {
+      transform: rotate(720deg);
+    }
+
+    #snav li a:hover span {
+      visibility: visible;
+    }
+
+
+    #snav li span {
+      background-color: #555;
+    }
+
+
+    #snav li .material-icons {
+      background-color: #EEE;
+      color: #555
+    }
+
+    /* icons hover color */
+
+    #snav li a:hover .material-icons {
+      color: #fff;
+    }
+
+    #snav li:nth-child(10n+1) span,
+    #snav li:nth-child(10n+1) a:hover .material-icons {
+      background-color: #8350DD;
+    }
+
+    #snav li:nth-child(10n+2) span,
+    #snav li:nth-child(10n+2) a:hover .material-icons {
+      background-color: #4EC5DB;
+    }
+
+    #snav li:nth-child(10n+3) span,
+    #snav li:nth-child(10n+3) a:hover .material-icons {
+      background-color: #3DC25D;
+    }
+
+    #snav li:nth-child(10n+4) span,
+    #snav li:nth-child(10n+4) a:hover .material-icons {
+      background-color: #99BE24;
+    }
+
+    #snav li:nth-child(10n+5) span,
+    #snav li:nth-child(10n+5) a:hover .material-icons {
+      background-color: #38c;
+    }
+
+    #snav li:nth-child(10n+6) span,
+    #snav li:nth-child(10n+6) a:hover .material-icons {
+      background-color: #ff0000;
+    }
+
+    #snav li:nth-child(10n+7) span,
+    #snav li:nth-child(10n+7) a:hover .material-icons {
+      background-color: #000;
+    }
+
+    #snav li:nth-child(10n+8) span,
+    #snav li:nth-child(10n+8) a:hover .material-icons {
+      background-color: #F1A111;
+    }
+
+    #snav li:nth-child(10n+9) span,
+    #snav li:nth-child(10n+9) a:hover .material-icons {
+      background-color: #777;
+    }
+
+    #snav li:nth-child(10n+10) span,
+    #snav li:nth-child(10n+10) a:hover .material-icons {
+      background-color: #30555C;
+    }
+
+    i {
+      height: 70px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <br>
+  <div id='snav' class='en'>
+    <ul>
+      <li>
+        <a [routerLink]="['/proveedores']">
+          <i class="material-icons">group</i>
+          <span>Proveedores</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/sucursales']">
+          <i class="material-icons">store_mall_directory</i>
+          <span>Sucursales</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/empleados']">
+          <i class="material-icons">person</i>
+          <span>Empleados</span>
+        </a>
+      </li>
+      <li>
+        <a href='#'>
+          <i class="material-icons">insert_drive_file</i>
+          <span>Facturas</span>
+        </a>
+      </li>
+      <li>
+        <a href='#'>
+          <i class="material-icons">location_city</i>
+          <span>Empresas</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/productos']">
+          <i class="material-icons">view_comfy</i>
+          <span>Productos</span>
+        </a>
+      </li>
+      <li>
+        <a href='#'>
+          <i class="material-icons">insert_chart</i>
+          <span>Estadisticas</span>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/categorias']">
+          <i class="material-icons">list</i>
+          <span>Category</span>
+        </a>
+      </li>
+      <li>
+        <a href='#'>
+          <i class="material-icons">list</i>
+          <span>Category</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-46156385-1', 'cssscript.com');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+
+</html>

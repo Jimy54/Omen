@@ -1,0 +1,55 @@
+h1 {
+  text-align: center;
+  font-family: "Questrial", sans-serif;
+  size: 75px;
+}
+
+input[type="text"] {
+  width: 230px;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+}
+
+.example-spacer {
+  flex: 0.9 0.9 auto;
+}
+
+.example-spacer1 {
+  flex: 1.3 1.3 auto;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type="text"]:focus {
+  width: 400px;
+}
+
+input {
+  margin-left: 3%;
+}
+
+thead {
+  color: white;
+  background-color: #b71c1c;
+}
+
+body {
+  font-family: "Questrial", sans-serif;
+}
+
+table {
+  margin-left: 45px;
+  margin-right: 25px;
+}
+
+mat-toolbar {
+  color: white;
+  margin-left: 45px;
+  text-align: center;
+  size: 100px;
+  font-family: "Questrial", sans-serif;
+  background-color: #424242;
+}
+
+.title {
+  font-size: 39px;
+}

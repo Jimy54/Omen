@@ -1,0 +1,79 @@
+<h1>Editar empleado</h1>
+<mat-divider></mat-divider>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre" [(ngModel)]="data.EmployeeName" name="EmployeeName">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el número telefónico" type="number" [(ngModel)]="data.EmployeePhone" name="EmployeePhone">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese el domicilio" [(ngModel)]="data.EmployeeAddress" name="EmployeeAddress">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su correo electrónico" [(ngModel)]="data.EmployeeEmail" name="EmployeeEmail">
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su edad" class="right" type="number" [(ngModel)]="data.EmployeeAge" name="EmployeeAge">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Salario" type="number" class="right" [(ngModel)]="data.EmployeeSalary" name="EmployeeSalary">
+    <span matPrefix>Q&nbsp;</span>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput [matDatepicker]="picker" placeholder="Fecha de Contratación" [(ngModel)]="data.EmployeeContratation" name="EmployeeContration">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Surcursal de empleado" [(ngModel)]="data.BranchOfficeID" name="BranchOfficeID">
+      <mat-option *ngFor="let branch of _postArrayBranch" value="branch.BranchOfficeID">{{branch.BranchOfficeName}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Rol de Usuario" [(ngModel)]="data.EmployeeRol" name="EmployeeRol">
+      <mat-option value="Facturación"> Facturación
+      </mat-option>
+      <mat-option value="Solo Lectura">Solo Lectura
+      </mat-option>
+      <mat-option value="Compras"> Compras
+      </mat-option>
+      <mat-option value="Administrador">Administrador
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+  <h2>Datos de Inicio de Sesión</h2>
+  <mat-divider></mat-divider>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese el usuario del empleado" [(ngModel)]="data.EmployeeUser" name="EmployeeUser">
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese la contrseña del empleado" [(ngModel)]="data.EmployeePassword" name="EmployeePassword">
+
+  </mat-form-field>
+  <p>Aqui va: {{EmployeeEmail}}</p>
+  <br>
+  <br>
+  <button mat-raised-button color="warn" (click)="updateEmployee(data.EmployeeID)" (click)="onNoClick()">Registro</button>
+
+</form>

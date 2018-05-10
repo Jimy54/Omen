@@ -1,0 +1,70 @@
+<body>
+  <mat-toolbar>
+    <span class="example-spacer1"></span>
+
+    <h1 class="title">Empleados</h1>
+
+    <span class="example-spacer"></span>
+
+    <button class="float-right" mat-fab color="warn" id="add" (click)="EnterDialog()">
+      <i class="material-icons">library_add</i>
+    </button>
+
+
+    <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Buscar por Nombre">
+
+
+
+
+
+
+  </mat-toolbar>
+
+
+  <br>
+
+  <br>
+  <br>
+  <div>
+
+    <table class="table" id="myTable">
+      <thead>
+        <tr class="header">
+          <th style="width: 3%">Nombre</th>
+          <th style="width: 3%">Telefono</th>
+          <th style="width: 3%">Dirección</th>
+          <th style="width: 3%">Correo Electrónico</th>
+          <th style="width: 3%">Edad</th>
+          <th style="width: 3%">Salario</th>
+          <th style="width: 3%">Fecha de Contración</th>
+          <th style="width: 3%">Sucursal</th>
+          <th style="width: 3%;">Rol</th>
+          <th style="width: 3%">Usuario</th>
+          <th style="width: 3%">Password</th>
+          <th style="width: 5%">Acciones</th>
+        </tr>
+      </thead>
+
+      <tr *ngFor="let employee of _postArray">
+        <td>{{employee.EmployeeName}}</td>
+        <td>{{employee.EmployeePhone}}</td>
+        <td>{{employee.EmployeeAddress}}</td>
+        <td>{{employee.EmployeeEmail}}</td>
+        <td>{{employee.EmployeeAge}}</td>
+        <td>{{employee.EmployeeSalary}}</td>
+        <td>{{employee.EmployeeContratation |date:'d/M/y'}}</td>
+        <td>{{employee.BranchOfficeName}}</td>
+        <td>{{employee.EmployeeRol}}</td>
+        <td>{{employee.EmployeeUser}}</td>
+        <td>{{employee.EmployeePassword}}</td>
+        <td>
+          <i class="material-icons" (click)="UpdateDialog(employee)">mode_edit</i>
+          <i class="material-icons" (click)="deleteDialog(employee)">delete_forever</i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+
+<app-menu></app-menu>

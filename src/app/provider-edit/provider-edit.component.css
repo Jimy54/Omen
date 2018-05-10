@@ -1,0 +1,20 @@
+.form {
+  width: 45%;
+  margin-left: 25px;
+  font-family: "Questrial", sans-serif;
+}
+
+input.right::-webkit-outer-spin-button,
+input.right::-webkit-inner-spin-button {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Questrial", sans-serif;
+  size: 75px;
+}
+
+button {
+  margin-left: 30px;
+}

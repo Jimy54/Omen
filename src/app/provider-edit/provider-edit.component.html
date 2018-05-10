@@ -1,0 +1,26 @@
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre" [(ngModel)]="data.ProviderName" name="ProviderName">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese la domicilio" [(ngModel)]="data.ProviderAddress" name="ProviderAddress">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese su telefono" type="number" [(ngModel)]="data.ProviderPhone" name="ProviderPhone">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su correo electrónico" [(ngModel)]="data.ProviderEmail" name="ProviderEmail">
+
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="warn" (click)="updateProvider(data.ProviderID)" (click)="onNoClick()">Registro</button>
+
+
+</form>

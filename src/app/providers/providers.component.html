@@ -1,0 +1,47 @@
+<body>
+
+  <mat-toolbar>
+    <span class="example-spacer1"></span>
+    <h1 class="title">Proveedores</h1>
+
+    <span class="example-spacer"></span>
+    <button mat-fab color="primary" id="add" (click)="EnterDialog()">
+      <i class="material-icons">library_add</i>
+    </button>
+    <input type="text" id="myInput" (keyup)="myFunction()" placeholder="Buscar por Nombre">
+  </mat-toolbar>
+
+
+  <br>
+
+  <br>
+  <div>
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Telefono</th>
+          <th>Dirección</th>
+          <th>Correo Electrónico</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of _postArray">
+          <td>{{list.ProviderName}}</td>
+          <td>{{list.ProviderAddress}}</td>
+          <td>{{list.ProviderPhone}}</td>
+          <td>{{list.ProviderEmail}}</td>
+          <td>
+            <i class="material-icons" (click)="UpdateDialog(list)">mode_edit</i>
+            <i class="material-icons" (click)="DeleteDialog(list)">delete_forever</i>
+          </td>
+
+        </tr>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<app-menu></app-menu>

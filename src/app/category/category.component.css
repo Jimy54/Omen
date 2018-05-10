@@ -1,0 +1,19 @@
+h1 {
+  text-align: center;
+  font-family: "Questrial", sans-serif;
+  size: 75px;
+}
+
+button {
+  margin-top: 12px;
+  margin-left: 25px;
+}
+
+#add {
+  float: right;
+}
+
+table {
+  margin-left: 45px;
+  margin-right: 25px;
+}

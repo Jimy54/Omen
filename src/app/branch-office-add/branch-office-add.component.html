@@ -1,0 +1,25 @@
+<h1>Ingrese una nueva sucursal</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme" [formGroup]="fbRegistrer">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre de la sucursal" formControlName="BranchOfficeName" [(ngModel)]="BranchOfficeName"
+      name="BranchOfficeName">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese la dirección de la nueva sucursal" formControlName="BranchOfficeAddress"
+      [(ngModel)]="BranchOfficeAddress" name="BranchOfficeAddress">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el teléfono de la sucursal" type="number" formControlName="BranchOfficePhone"
+      [(ngModel)]="BranchOfficePhone" name="BranchOfficePhone">
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="warn" [disabled]="!fbRegistrer.valid" (click)="enterBranchOffice()" (click)="onNoClick()">Registro</button>
+</form>

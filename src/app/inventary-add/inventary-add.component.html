@@ -1,0 +1,43 @@
+<h1>Ingrese una nuevo Producto</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre del producto">
+  </mat-form-field>
+
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese la cantidad" type="number">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Salario" type="number" class="right">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el precio" type="number" class="right">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el codigo de Barra">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Categoría del producto" name="BranchOfficeID">
+    </mat-select>
+  </mat-form-field>
+
+
+  <br>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Registro</button>
+</form>

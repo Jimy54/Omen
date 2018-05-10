@@ -1,0 +1,36 @@
+<h1>Ingrese un nuevo proveedor</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre" [(ngModel)]="ProviderName" name="ProviderName">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese la domicilio" [(ngModel)]="ProviderAddress" name="ProviderAddress">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese su telefono" type="number" [(ngModel)]="ProviderPhone" name="ProviderPhone">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su correo electrónico" [formControl]="emailFormControl" [(ngModel)]="ProviderEmail"
+      name="ProviderEmail">
+    <mat-error *ngIf="emailFormControl.hasError('pattern')">
+      Ingrese un email valido
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Se debe de ingresar un email
+    </mat-error>
+
+  </mat-form-field>
+
+
+  <button mat-raised-button color="warn" (click)="enterProvider()" (click)="onNoClick()">Registro</button>
+
+
+</form>

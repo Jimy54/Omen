@@ -1,0 +1,25 @@
+<h1>
+  Productos</h1>
+
+<button mat-fab color="primary" id="add" (click)="EnterDialog()">
+  <i class="material-icons">library_add</i>
+</button>
+
+
+<br>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Contactos</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image alt="Contacto">
+  <mat-card-content>
+    <p>
+      En este apartado se podra crear y observar los contactos creados por tu usuario
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a class="nav-link" [routerLink]="['/contacts']">Contactos</a>
+  </mat-card-actions>
+</mat-card>
+<app-menu></app-menu>

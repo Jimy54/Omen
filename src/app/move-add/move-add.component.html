@@ -1,0 +1,24 @@
+<h1>Ingrese un nuevo movimiento</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese la descripción del movimiento">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el monto del movimiento " type="number">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput [matDatepicker]="picker" placeholder="Fecha del movimiento">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Registro</button>
+</form>

@@ -1,0 +1,88 @@
+<h1>Ingrese un nuevo empleado</h1>
+<mat-divider></mat-divider>
+<form class="unicorn-dark-theme" [formGroup]="fbRegistrer">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre" formControlName="EmployeeName" [(ngModel)]="EmployeeName" name="EmployeeName">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el número telefónico" type="number" formControlName="EmployeePhone" [(ngModel)]="EmployeePhone"
+      name="EmployeePhone">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese el domicilio" formControlName="EmployeeAddress" [(ngModel)]="EmployeeAddress" name="EmployeeAddress">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su correo electrónico" formControlName="EmployeeEmail" [(ngModel)]="EmployeeEmail" name="EmployeeEmail">
+    <mat-error *ngIf="fbRegistrer.controls['EmployeeEmail'].touched && !fbRegistrer.controls['EmployeeEmail'].valid">Ingrese un email</mat-error>
+
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese su edad" class="right" type="number" formControlName="EmployeeAge" [(ngModel)]="EmployeeAge"
+      name="EmployeeAge">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Salario" type="number" class="right" formControlName="EmployeeSalary" [(ngModel)]="EmployeeSalary"
+      name="EmployeeSalary">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <input matInput [matDatepicker]="picker" placeholder="Fecha de Contratación" formControlName="EmployeeContration" [(ngModel)]="EmployeeContration"
+      name="EmployeeContration">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Surcursal de empleado" formControlName="BranchOfficeID" [(ngModel)]="BranchOfficeID" name="BranchOfficeID">
+      <mat-option *ngFor="let branch of _postArrayBranch" value="{{branch.BranchOfficeID}}">{{branch.BranchOfficeName}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Rol de Usuario" formControlName="EmployeeRol" [(ngModel)]="EmployeeRol" name="EmployeeRol">
+      <mat-option value="Facturación"> Facturación
+      </mat-option>
+      <mat-option value="Solo Lectura">Solo Lectura
+      </mat-option>
+      <mat-option value="Compras"> Compras
+      </mat-option>
+      <mat-option value="Administrador">Administrador
+      </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+  <h2>Datos de Inicio de Sesión</h2>
+  <mat-divider></mat-divider>
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese el usuario del empleado" formControlName="EmployeeUser" [(ngModel)]="EmployeeUser" name="EmployeeUser">
+    <mat-error *ngIf="fbRegistrer.controls['EmployeeUser'].touched && !fbRegistrer.controls['EmployeeUser'].valid">Ingrese un usuario</mat-error>
+
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input matInput placeholder="Ingrese la contrseña del empleado" formControlName="EmployeePassword" [(ngModel)]="EmployeePassword"
+      name="EmployeePassword">
+    <mat-error *ngIf="fbRegistrer.controls['EmployeePassword'].touched && !fbRegistrer.controls['EmployeePassword'].valid">Ingrese una contraseña</mat-error>
+
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="warn" [disabled]="!fbRegistrer.valid" (click)="enterEmployer()" (click)="onNoClick()">Registro</button>
+
+</form>
