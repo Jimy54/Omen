@@ -52,6 +52,8 @@ import { EmployerDeleteComponent } from "./employer-delete/employer-delete.compo
 import { BranchOfficeService } from "./service/branch-office.service";
 import { ProviderEditComponent } from "./provider-edit/provider-edit.component";
 import { ProviderDeleteComponent } from "./provider-delete/provider-delete.component";
+import { BranchOfficeEditComponent } from './branch-office-edit/branch-office-edit.component';
+import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-office-delete.component';
 
 //Themes Angular
 
@@ -75,7 +77,9 @@ import { ProviderDeleteComponent } from "./provider-delete/provider-delete.compo
     EmployerEditComponent,
     EmployerDeleteComponent,
     ProviderEditComponent,
-    ProviderDeleteComponent
+    ProviderDeleteComponent,
+    BranchOfficeEditComponent,
+    BranchOfficeDeleteComponent
   ],
   imports: [
     BrowserModule,
