@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material";
 import { InventaryAddComponent } from "../inventary-add/inventary-add.component";
+import { InventaryService } from "../service/inventary.service";
+import { Inventary } from "../models/inventary.model";
 
 @Component({
   selector: "app-inventaries",
@@ -8,9 +10,16 @@ import { InventaryAddComponent } from "../inventary-add/inventary-add.component"
   styleUrls: ["./inventaries.component.css"]
 })
 export class InventariesComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private inventaryService: InventaryService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getInventaries();
+  }
+
+  _postArray: Inventary[];
 
   EnterDialog(): void {
     let dialogRef = this.dialog.open(InventaryAddComponent, {
@@ -19,6 +28,17 @@ export class InventariesComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      this.getInventaries();
+    });
+  }
+
+  getInventaries(): void {
+    this.inventaryService
+      .getInventary()
+      .subscribe(
+        resultArray => (this._postArray = resultArray),
+        error => console.log("Error " + error)
+      );
   }
 }

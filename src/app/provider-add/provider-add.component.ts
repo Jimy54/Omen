@@ -47,14 +47,14 @@ export class ProviderAddComponent implements OnInit {
       })
       .subscribe(response => {
         this.getProvider();
+        this.snackBar.open("Proveedor Registrado", "Aceptar", {
+          duration: 700
+        });
       });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.snackBar.open("Proveedor Registrado", "Aceptar", {
-      duration: 700
-    });
   }
 
   getProvider(): void {

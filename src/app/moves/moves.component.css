@@ -7,3 +7,7 @@ h1 {
 button {
   float: right;
 }
+
+i {
+  cursor: pointer;
+}

@@ -1,31 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { BranchOffice } from '../models/branchOffice.model';
-import { BranchOfficeService } from '../service/branch-office.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Inject } from "@angular/core";
+import { BranchOffice } from "../models/branchOffice.model";
+import { BranchOfficeService } from "../service/branch-office.service";
+import { HttpClient } from "@angular/common/http";
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
+import { BranchOfficeComponent } from "../branch-office/branch-office.component";
 
 @Component({
-  selector: 'app-branch-office-edit',
-  templateUrl: './branch-office-edit.component.html',
-  styleUrls: ['./branch-office-edit.component.css']
+  selector: "app-branch-office-edit",
+  templateUrl: "./branch-office-edit.component.html",
+  styleUrls: ["./branch-office-edit.component.css"]
 })
 export class BranchOfficeEditComponent implements OnInit {
-
-  constructor(private branchOfficeService:BranchOfficeService,private httpCliente:HttpClient) { }
+  constructor(
+    private branchOfficeService: BranchOfficeService,
+    private dialogRef: MatDialogRef<BranchOfficeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private httpCliente: HttpClient,
+    private snackBar: MatSnackBar
+  ) {}
   private url: string = "http://localhost:4120/branchOffice";
   BranchOfficeID;
   BranchOfficeName;
   BranchOfficePhone;
   BranchOfficeAddress;
   BusinessID;
-  _postArray: BranchOffice
-  ngOnInit() {
+  _postArray: BranchOffice;
+  ngOnInit() {}
+
+  updateBranchOffice(BranchOfficeID) {
+    this.httpCliente
+      .put(this.url + "/updateBranchOffice/" + BranchOfficeID, {
+        BranchOfficeName: this.data.BranchOfficeName,
+        BranchOfficePhone: this.data.BranchOfficePhone,
+        BranchOfficeAddress: this.data.BranchOfficeAddress,
+        BusinessID: 1
+      })
+      .subscribe(response => {
+        this.getBranchOffice();
+        this.snackBar.open("Sucursal Actualizada", "Aceptar", {
+          duration: 700
+        });
+      });
   }
 
-  updateBranchOffice(){
-
+  onNoClick(): void {
+    this.dialogRef.close();
   }
-
-
   getBranchOffice() {
     this.branchOfficeService
       .getBranchOffice()
@@ -34,5 +54,4 @@ export class BranchOfficeEditComponent implements OnInit {
         error => console.log("Error " + error)
       );
   }
-
 }

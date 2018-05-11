@@ -1,0 +1,43 @@
+<h1>Editar un Producto</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="data.InventaryDescription" name="InventaryDescription">
+  </mat-form-field>
+
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese la cantidad" type="number" [(ngModel)]="data.Quantity" name="Quantity">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Impuesto" type="number" class="right" [(ngModel)]="data.Tax" name="Tax">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el precio" type="number" class="right" [(ngModel)]="data.Price" name="Price">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el codigo de Barra" [(ngModel)]="data.CodeBar" name="CodeBar">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="data.CategoryID">
+    </mat-select>
+  </mat-form-field>
+
+
+  <br>
+  <button mat-raised-button color="warn" (click)="enterInventary()" (click)="onNoClick()">Registro</button>
+</form>

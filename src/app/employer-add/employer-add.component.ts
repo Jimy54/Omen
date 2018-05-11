@@ -95,14 +95,14 @@ export class EmployerAddComponent implements OnInit {
       )
       .subscribe(response => {
         this.getEmployers();
+        this.snackBar.open("Empleado Registrado", "Aceptar", {
+          duration: 700
+        });
       });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.snackBar.open("Empleado Registrado", "Aceptar", {
-      duration: 700
-    });
   }
 
   getEmployers(): void {

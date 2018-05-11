@@ -1,7 +1,7 @@
-<h1>Ingrese una nueva sucursal</h1>
+<h1>Editar una sucursal</h1>
 <mat-divider></mat-divider>
 <br>
-<form class="unicorn-dark-theme" [formGroup]="fbRegistrer">
+<form class="unicorn-dark-theme">
   <mat-form-field class="form" dividerColor="primary">
 
     <input matInput placeholder="Ingrese el nombre de la sucursal" [(ngModel)]="data.BranchOfficeName" name="BranchOfficeName">
@@ -20,5 +20,5 @@
   </mat-form-field>
 
   <br>
-  <button mat-raised-button color="warn" (click)="enterBranchOffice()" (click)="onNoClick()">Registro</button>
+  <button mat-raised-button color="warn" (click)="updateBranchOffice(data.BranchOfficeID)" (click)="onNoClick()">Registro</button>
 </form>

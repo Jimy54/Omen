@@ -29,7 +29,8 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatListModule } from "@angular/material/list";
 //Routes
 import { routing } from "./app.routing";
 import { ProvidersComponent } from "./providers/providers.component";
@@ -52,8 +53,10 @@ import { EmployerDeleteComponent } from "./employer-delete/employer-delete.compo
 import { BranchOfficeService } from "./service/branch-office.service";
 import { ProviderEditComponent } from "./provider-edit/provider-edit.component";
 import { ProviderDeleteComponent } from "./provider-delete/provider-delete.component";
-import { BranchOfficeEditComponent } from './branch-office-edit/branch-office-edit.component';
-import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-office-delete.component';
+import { BranchOfficeEditComponent } from "./branch-office-edit/branch-office-edit.component";
+import { BranchOfficeDeleteComponent } from "./branch-office-delete/branch-office-delete.component";
+import { InventaryService } from "./service/inventary.service";
+import { InventaryEditComponent } from './inventary-edit/inventary-edit.component';
 
 //Themes Angular
 
@@ -79,7 +82,8 @@ import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-offic
     ProviderEditComponent,
     ProviderDeleteComponent,
     BranchOfficeEditComponent,
-    BranchOfficeDeleteComponent
+    BranchOfficeDeleteComponent,
+    InventaryEditComponent
   ],
   imports: [
     BrowserModule,
@@ -94,10 +98,12 @@ import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-offic
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    MatListModule,
     MatDatepickerModule,
     MatTableModule,
     MatDividerModule,
     MatSelectModule,
+    MatGridListModule,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
@@ -107,6 +113,7 @@ import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-offic
     { provide: MAT_DATE_LOCALE, useValue: "es-ES" },
     EmployerService,
     ProviderService,
+    InventaryService,
     BranchOfficeService,
     FormBuilder
   ],
@@ -115,12 +122,15 @@ import { BranchOfficeDeleteComponent } from './branch-office-delete/branch-offic
   entryComponents: [
     EmployerAddComponent,
     EmployerEditComponent,
+    InventaryAddComponent,
     EmployerDeleteComponent,
     ProviderAddComponent,
     ProviderDeleteComponent,
     ProviderEditComponent,
     MoveAddComponent,
+    BranchOfficeEditComponent,
     BranchOfficeAddComponent,
+    BranchOfficeDeleteComponent,
     InventaryAddComponent,
     CategoryAddComponent
   ]

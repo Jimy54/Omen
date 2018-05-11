@@ -3,6 +3,8 @@ import { MatDialog, MAT_DIALOG_DATA } from "@angular/material";
 import { BranchOfficeAddComponent } from "../branch-office-add/branch-office-add.component";
 import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
+import { BranchOfficeEditComponent } from "../branch-office-edit/branch-office-edit.component";
+import { BranchOfficeDeleteComponent } from "../branch-office-delete/branch-office-delete.component";
 
 @Component({
   selector: "app-branch-office",
@@ -16,7 +18,10 @@ export class BranchOfficeComponent implements OnInit {
   ) {}
   private url: string = "http://localhost:4120/branchOffice";
   _postArray: BranchOffice[];
-
+  BranchOfficeID;
+  BranchOfficeName;
+  BranchOfficePhone;
+  BranchOfficeAddress;
   ngOnInit(): void {
     this.getBranchOffice();
   }
@@ -26,6 +31,37 @@ export class BranchOfficeComponent implements OnInit {
       width: "800px",
       height: "400px",
       data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getBranchOffice();
+    });
+  }
+
+  UpdateDialog(branchOfficeData) {
+    let dialogRef = this.dialog.open(BranchOfficeEditComponent, {
+      width: "800px",
+      height: "400px",
+      data: {
+        BranchOfficeID: branchOfficeData.BranchOfficeID,
+        BranchOfficeName: branchOfficeData.BranchOfficeName,
+        BranchOfficePhone: branchOfficeData.BranchOfficePhone,
+        BranchOfficeAddress: branchOfficeData.BranchOfficeAddress
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getBranchOffice();
+    });
+  }
+
+  DeleteDialog(branchOfficeData) {
+    let dialogRef = this.dialog.open(BranchOfficeDeleteComponent, {
+      width: "350px",
+      height: "350px",
+      data: {
+        BranchOfficeID: branchOfficeData.BranchOfficeID
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

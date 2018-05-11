@@ -4,22 +4,32 @@
 <button mat-fab color="primary" id="add" (click)="EnterDialog()">
   <i class="material-icons">library_add</i>
 </button>
-
-
 <br>
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Contactos</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image alt="Contacto">
-  <mat-card-content>
-    <p>
-      En este apartado se podra crear y observar los contactos creados por tu usuario
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <a class="nav-link" [routerLink]="['/contacts']">Contactos</a>
-  </mat-card-actions>
-</mat-card>
+<br>
+<mat-grid-list cols="2" rowHeight="100px">
+
+  <mat-card class="example-card" *ngFor="let inventary of _postArray">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title class="title">{{inventary.InventaryDescription}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Codigo de Barras: {{inventary.CodeBar}}
+      </p>
+      <p>Precio de Compras: Q{{inventary.Price}}</p>
+      <p>Precio de Venta: Q{{inventary.Price +(inventary.Price * 0.25)}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a class="nav-link" [routerLink]="['/contacts']">Vender</a>
+      <i class="material-icons" (click)="UpdateDialog(employee)">mode_edit</i>
+      <i class="material-icons" id="delete" (click)="deleteDialog(employee)">delete_forever</i>
+    </mat-card-actions>
+  </mat-card>
+
+</mat-grid-list>
+
+
+
+
 <app-menu></app-menu>

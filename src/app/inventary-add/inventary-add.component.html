@@ -4,40 +4,40 @@
 <form class="unicorn-dark-theme">
   <mat-form-field class="form" dividerColor="primary">
 
-    <input matInput placeholder="Ingrese el nombre del producto">
+    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="InventaryDescription" name="InventaryDescription">
   </mat-form-field>
 
 
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Ingrese la cantidad" type="number">
+    <input class="right" matInput placeholder="Ingrese la cantidad" type="number" [(ngModel)]="Quantity" name="Quantity">
   </mat-form-field>
 
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Salario" type="number" class="right">
+    <input class="right" matInput placeholder="Impuesto" type="number" class="right" [(ngModel)]="Tax" name="Tax">
     <span matPrefix>Q&nbsp;</span>
 
   </mat-form-field>
 
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Ingrese el precio" type="number" class="right">
+    <input class="right" matInput placeholder="Ingrese el precio" type="number" class="right" [(ngModel)]="Price" name="Price">
     <span matPrefix>Q&nbsp;</span>
 
   </mat-form-field>
 
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Ingrese el codigo de Barra">
+    <input class="right" matInput placeholder="Ingrese el codigo de Barra" [(ngModel)]="CodeBar" name="CodeBar">
   </mat-form-field>
 
   <mat-form-field class="form">
-    <mat-select placeholder="Categoría del producto" name="BranchOfficeID">
+    <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="CategoryID">
     </mat-select>
   </mat-form-field>
 
 
   <br>
-  <button mat-raised-button color="warn" (click)="onNoClick()">Registro</button>
+  <button mat-raised-button color="warn" (click)="enterInventary()" (click)="onNoClick()">Registro</button>
 </form>

@@ -49,14 +49,14 @@ export class BranchOfficeAddComponent implements OnInit {
       })
       .subscribe(reponse => {
         this.getBranchOffice();
+        this.snackBar.open("Sucursal Registrado", "Aceptar", {
+          duration: 700
+        });
       });
   }
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.snackBar.open("Sucursal Registrado", "Aceptar", {
-      duration: 700
-    });
   }
 
   getBranchOffice() {

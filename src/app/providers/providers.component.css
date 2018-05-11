@@ -40,6 +40,10 @@ mat-toolbar {
   font-size: 39px;
 }
 
+i {
+  cursor: pointer;
+}
+
 /* When the input field gets focus, change its width to 100% */
 input[type="text"]:focus {
   width: 400px;
