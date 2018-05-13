@@ -34,6 +34,7 @@
 
   <mat-form-field class="form">
     <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="CategoryID">
+      <mat-option *ngFor="let category of _postArrayCategory" value="{{category.CategoryID}}">{{category.CategoryDescription}}</mat-option>
     </mat-select>
   </mat-form-field>
 

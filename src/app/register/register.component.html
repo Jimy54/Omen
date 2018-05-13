@@ -1,0 +1,53 @@
+<body>
+
+
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <h2>Registro: </h2>
+      </mat-card-header>
+    </mat-card>
+    <mat-card-content class="example-form">
+      <form>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Ingrese su nombre: " class="textArea" [(ngModel)]="UserName" name="UserName">
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Ingrese su apodo: " class="textArea" [(ngModel)]="UserNickName" name="UserNickName">
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Ingrese su correo: " class="textArea" [(ngModel)]="UserEmail" name="UserEmail">
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Ingrese su contraseña: " type="password" class="textArea" [(ngModel)]="UserPassword" name="UserPassword">
+        </mat-form-field>
+        <br>
+        <br>
+        <br>
+        <br>
+        <button mat-raised-button color="warn" class="button" (click)="enterUser()">Registrarse</button>
+        <br>
+        <br>
+      </form>
+    </mat-card-content>
+
+
+  </div>
+
+
+
+</body>

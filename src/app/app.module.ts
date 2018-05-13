@@ -56,7 +56,15 @@ import { ProviderDeleteComponent } from "./provider-delete/provider-delete.compo
 import { BranchOfficeEditComponent } from "./branch-office-edit/branch-office-edit.component";
 import { BranchOfficeDeleteComponent } from "./branch-office-delete/branch-office-delete.component";
 import { InventaryService } from "./service/inventary.service";
-import { InventaryEditComponent } from './inventary-edit/inventary-edit.component';
+import { InventaryEditComponent } from "./inventary-edit/inventary-edit.component";
+import { InventaryDeleteComponent } from "./inventary-delete/inventary-delete.component";
+import { CategoryEditComponent } from "./category-edit/category-edit.component";
+import { CategoryDeleteComponent } from "./category-delete/category-delete.component";
+import { CategoryService } from "./service/category.service";
+import { FilterInventaryPipe } from "./filter-inventary.pipe";
+import { RegisterComponent } from "./register/register.component";
+import { AuthService } from "./service/auth-service.service";
+import { LoginComponent } from "./login/login.component";
 
 //Themes Angular
 
@@ -83,7 +91,13 @@ import { InventaryEditComponent } from './inventary-edit/inventary-edit.componen
     ProviderDeleteComponent,
     BranchOfficeEditComponent,
     BranchOfficeDeleteComponent,
-    InventaryEditComponent
+    InventaryEditComponent,
+    InventaryDeleteComponent,
+    CategoryEditComponent,
+    CategoryDeleteComponent,
+    FilterInventaryPipe,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -114,7 +128,9 @@ import { InventaryEditComponent } from './inventary-edit/inventary-edit.componen
     EmployerService,
     ProviderService,
     InventaryService,
+    CategoryService,
     BranchOfficeService,
+    AuthService,
     FormBuilder
   ],
   bootstrap: [AppComponent],
@@ -129,10 +145,14 @@ import { InventaryEditComponent } from './inventary-edit/inventary-edit.componen
     ProviderEditComponent,
     MoveAddComponent,
     BranchOfficeEditComponent,
+    InventaryDeleteComponent,
     BranchOfficeAddComponent,
     BranchOfficeDeleteComponent,
     InventaryAddComponent,
-    CategoryAddComponent
+    InventaryEditComponent,
+    CategoryAddComponent,
+    CategoryEditComponent,
+    CategoryDeleteComponent
   ]
 })
 export class AppModule {

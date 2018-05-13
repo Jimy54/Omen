@@ -14,10 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>'HOla'</td>
+      <tr *ngFor="let category of _postArray">
+        <td>{{category.CategoryDescription}}</td>
         <td>
-          <i class="material-icons">mode_edit</i>
+          <i class="material-icons" (click)="UpdateDialog(category)">mode_edit</i>
+          <i class="material-icons" (click)="DeleteDialog(category)">delete_forever</i>
         </td>
       </tr>
     </tbody>

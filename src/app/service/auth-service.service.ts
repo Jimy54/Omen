@@ -7,7 +7,7 @@ export const TOKEN_NAME: string = "jwt_token";
 
 @Injectable()
 export class AuthService {
-  public url = "http://localhost:4210";
+  public url = "http://localhost:4120";
   public token;
   public identity;
   constructor(public _http: HttpClient) {}
@@ -21,16 +21,16 @@ export class AuthService {
     });
   }
 
-  login(usuarioData, gettoken = null): Observable<any> {
+  login(userData, gettoken = null): Observable<any> {
     if (gettoken != null) {
-      usuarioData.gettoken = gettoken;
+      userData.gettoken = gettoken;
     }
 
-    let params = JSON.stringify(usuarioData);
+    let params = JSON.stringify(userData);
     let headers1 = new HttpHeaders().set("Content-Type", "application/json");
 
-    console.log(usuarioData);
-    return this._http.post(this.url + "/login", params, {
+    console.log(userData);
+    return this._http.post(this.url + "/user/loginUser", params, {
       headers: headers1
     });
   }

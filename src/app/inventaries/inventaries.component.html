@@ -4,14 +4,17 @@
 <button mat-fab color="primary" id="add" (click)="EnterDialog()">
   <i class="material-icons">library_add</i>
 </button>
+
+<input type="text">
 <br>
 <br>
+<p>{{term}}</p>
 <mat-grid-list cols="2" rowHeight="100px">
 
   <mat-card class="example-card" *ngFor="let inventary of _postArray">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title class="title">{{inventary.InventaryDescription}}</mat-card-title>
+      <mat-card-title class="title" id="td">{{inventary.InventaryDescription}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -23,8 +26,9 @@
     </mat-card-content>
     <mat-card-actions>
       <a class="nav-link" [routerLink]="['/contacts']">Vender</a>
-      <i class="material-icons" (click)="UpdateDialog(employee)">mode_edit</i>
-      <i class="material-icons" id="delete" (click)="deleteDialog(employee)">delete_forever</i>
+      <i class="material-icons" (click)="UpdateDialog(inventary)">mode_edit</i>
+
+      <i class="material-icons" id="delete" (click)="deleteDialog(inventary)">delete_forever</i>
     </mat-card-actions>
   </mat-card>
 

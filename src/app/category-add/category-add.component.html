@@ -1,14 +1,14 @@
-<h1>Ingrese un nuevo movimiento</h1>
+<h1>Ingrese una nueva categoría</h1>
 <mat-divider></mat-divider>
 <br>
 <form class="unicorn-dark-theme">
   <mat-form-field class="form" dividerColor="primary">
 
-    <input matInput placeholder="Ingrese la categoría">
+    <input matInput placeholder="Ingrese la categoría" [(ngModel)]="CategoryDescription" name="CategoryDescription">
   </mat-form-field>
 
 
 
   <br>
-  <button mat-raised-button color="warn" (click)="onNoClick()">Registro</button>
+  <button mat-raised-button color="warn" (click)="EnterCategory()" (click)="onNoClick()">Registro</button>
 </form>

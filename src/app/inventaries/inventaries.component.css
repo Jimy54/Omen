@@ -21,6 +21,10 @@ button {
   display: inline-block;
 }
 
+input {
+  margin-left: 50px;
+}
+
 mat-grid-list {
   margin-left: 60px;
 }

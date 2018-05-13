@@ -9,6 +9,8 @@ import { InventariesComponent } from "../inventaries/inventaries.component";
 import { HttpClient } from "@angular/common/http";
 import { InventaryService } from "../service/inventary.service";
 import { Inventary } from "../models/inventary.model";
+import { CategoryService } from "../service/category.service";
+import { Category } from "../models/category.model";
 
 @Component({
   selector: "app-inventary-add",
@@ -20,11 +22,15 @@ export class InventaryAddComponent implements OnInit {
     private dialogRef: MatDialogRef<InventariesComponent>,
     private http: HttpClient,
     private inventaryService: InventaryService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private categoryService: CategoryService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCategories();
+  }
   _postArray: Inventary[];
+  _postArrayCategory: Category[];
   InventaryID;
   InventaryDescription = "";
   Quantity = 0;
@@ -34,7 +40,7 @@ export class InventaryAddComponent implements OnInit {
   CodeBar;
   BusinessID = 1;
   CategoryID = 1;
-  private url = "http://localhost:4120/inventarY/";
+  private url = "http://localhost:4120/inventary/";
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -50,7 +56,7 @@ export class InventaryAddComponent implements OnInit {
         InventaryImage: "dada",
         CodeBar: this.CodeBar,
         BusinessID: 1,
-        CategoryID: 1
+        CategoryID: this.CategoryID
       })
       .subscribe(response => {
         this.snackBar.open("Producto agregado", "Aceptar", {
@@ -65,6 +71,15 @@ export class InventaryAddComponent implements OnInit {
       .getInventary()
       .subscribe(
         response => resultArray => (this._postArray = resultArray),
+        error => console.log("Error " + error)
+      );
+  }
+
+  getCategories() {
+    this.categoryService
+      .getCategory()
+      .subscribe(
+        resultArray => (this._postArrayCategory = resultArray),
         error => console.log("Error " + error)
       );
   }

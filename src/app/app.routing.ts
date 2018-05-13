@@ -8,6 +8,9 @@ import { MenuComponent } from "./menu/menu.component";
 import { BranchOfficeComponent } from "./branch-office/branch-office.component";
 import { InventariesComponent } from "./inventaries/inventaries.component";
 import { CategoryComponent } from "./category/category.component";
+import { RegisterComponent } from "./register/register.component";
+import { BusinessComponent } from "./business/business.component";
+import { LoginComponent } from "./login/login.component";
 
 const appRoutes: Routes = [
   {
@@ -37,6 +40,18 @@ const appRoutes: Routes = [
   {
     path: "categorias",
     component: CategoryComponent
+  },
+  {
+    path: "registro",
+    component: RegisterComponent
+  },
+  {
+    path: "empresas",
+    component: BusinessComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
   }
 ];
 

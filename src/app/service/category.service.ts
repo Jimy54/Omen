@@ -9,7 +9,7 @@ export class CategoryService {
 
   url = "http://localhost:4120/category/listCategories";
 
-  getEmployer(): Observable<Category[]> {
+  getCategory(): Observable<Category[]> {
     return this.http.get<Category[]>(this.url);
   }
 }
