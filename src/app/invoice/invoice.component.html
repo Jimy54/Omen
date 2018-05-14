@@ -1,0 +1,95 @@
+<body>
+  <mat-toolbar>
+    <span class="example-spacer1"></span>
+
+    <h1 class="title">Facturas</h1>
+
+    <span class="example-spacer"></span>
+
+  </mat-toolbar>
+  <br>
+  <br>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header class="headerText">
+        <h2>Cliente: </h2>
+      </mat-card-header>
+    </mat-card>
+    <mat-card-content class="example-form">
+      <form>
+        <br>
+        <br>
+        <label class="example-full-width2" style="font-family:Questrial">No. Factura:</label>
+        <mat-form-field class="example-full-width2">
+          <input matInput placeholder="NO. " class="textArea" [(ngModel)]="NumeroFactura" name="NumeroFactura" readonly="readonly">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nombre Cliente: " [(ngModel)]="ClientName" name="ClientName" class="textArea">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Apellido Cliente: " class="textArea" [(ngModel)]="ClientLastName" name="ClientLastName">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="NIT: " class="textArea" [(ngModel)]="ClientNit" name="ClientNit">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="InvoiceDate" name="InvoiceDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi="true" #picker></mat-datepicker>
+        </mat-form-field>
+
+        <br>
+
+      </form>
+    </mat-card-content>
+
+    <button (click)="enterInvoice()">Agregar</button>
+
+  </div>
+
+  <br>
+  <br>
+
+  <button class="float-right" mat-fab color="warn" id="add" (click)="addInput()">
+    <i class="material-icons">add</i>
+  </button>
+  <br>
+  <br>
+
+  <table id="dataTable">
+    <thead class="dataTable">
+      <tr class="header">
+        <th style="width: 3%">Cantidad</th>
+        <th style="width: 3%">Descripción</th>
+        <th style="width: 3%">Precio Unitario</th>
+        <th style="width: 3%">Total</th>
+      </tr>
+    </thead>
+    <tr>
+      <td id="trA" [(ngModel)]="Quantity" name="Quantity">
+        <br>
+      </td>
+      <td id="trA2">
+        <br>
+      </td>
+      <td id="trA3">
+        <br>
+      </td>
+      <td id="trA4">
+
+      </td>
+    </tr>
+
+  </table>
+
+
+
+</body>
+
+<app-menu></app-menu>

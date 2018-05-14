@@ -39,7 +39,6 @@ export class AuthService {
     let params = JSON.stringify(userData);
     let headers1 = new HttpHeaders()
       .set("Content-Type", "application/json")
-      .set("Authorization", this.getToken());
 
     console.log(userData);
     return this._http.post(this.url + "/business/createBusiness", params, {

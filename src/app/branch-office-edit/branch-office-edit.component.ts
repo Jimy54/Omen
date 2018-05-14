@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
 import { BranchOfficeComponent } from "../branch-office/branch-office.component";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-branch-office-edit",
@@ -12,14 +13,18 @@ import { SendToken } from "../service/SendToken.service";
   styleUrls: ["./branch-office-edit.component.css"]
 })
 export class BranchOfficeEditComponent implements OnInit {
+  identity_id;
   constructor(
     private branchOfficeService: BranchOfficeService,
     private dialogRef: MatDialogRef<BranchOfficeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = userService.getIdentity();
+  }
   private url: string = "http://localhost:4120/branchOffice";
   BranchOfficeID;
   BranchOfficeName;
@@ -37,7 +42,7 @@ export class BranchOfficeEditComponent implements OnInit {
           BranchOfficeName: this.data.BranchOfficeName,
           BranchOfficePhone: this.data.BranchOfficePhone,
           BranchOfficeAddress: this.data.BranchOfficeAddress,
-          BusinessID: 1
+          BusinessID: this.data.identity_id.businessID
         },
         { headers: this.token.enviarToke() }
       )

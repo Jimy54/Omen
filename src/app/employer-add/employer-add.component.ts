@@ -11,6 +11,7 @@ import { Employer } from "../models/employer.model";
 import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
 @Component({
@@ -34,7 +35,7 @@ export class EmployerAddComponent implements OnInit {
   EmployeeRol = "";
   EmployeeUser;
   EmployeePassword;
-
+  identity_id;
   BranchOfficeID: number;
   BussinessID: number;
 
@@ -48,8 +49,11 @@ export class EmployerAddComponent implements OnInit {
     public httpCliente: HttpClient,
     private dialogRef: MatDialogRef<EmployersComponent>,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
 
   ngOnInit() {
     this.fbRegistrer = this.fb.group({
@@ -66,8 +70,7 @@ export class EmployerAddComponent implements OnInit {
       ],
       EmployeeUser: ["", Validators.required],
       EmployeePassword: ["", Validators.required],
-      BranchOfficeID: 1,
-      BussinessID: 1
+      BranchOfficeID: ["", Validators.required]
     });
 
     this.getBranchOffice();
@@ -91,7 +94,7 @@ export class EmployerAddComponent implements OnInit {
           EmployeeUser: this.EmployeeUser,
           EmployeePassword: this.EmployeePassword,
           BranchOfficeID: this.BranchOfficeID,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         { headers: this.token.enviarToke() }
       )

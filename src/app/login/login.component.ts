@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         } else {
           localStorage.setItem("identity", JSON.stringify(this.identity));
           this.getToken();
-          this.router.navigate(["/empresas"]);
+          this.router.navigate(["/empleados"]);
         }
       },
       error => {

@@ -11,6 +11,7 @@ import { CategoryComponent } from "./category/category.component";
 import { RegisterComponent } from "./register/register.component";
 import { BusinessComponent } from "./business/business.component";
 import { LoginComponent } from "./login/login.component";
+import { InvoiceComponent } from "./invoice/invoice.component";
 
 const appRoutes: Routes = [
   {
@@ -52,6 +53,10 @@ const appRoutes: Routes = [
   {
     path: "login",
     component: LoginComponent
+  },
+  {
+    path: "facturas",
+    component: InvoiceComponent
   }
 ];
 

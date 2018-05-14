@@ -1,0 +1,71 @@
+body{
+    margin-left: 20px;
+    padding-left: 30px;
+  
+  }
+  
+  .inputs{
+    font-size: 50px;
+    background-color: black;
+  }
+  
+  mat-toolbar {
+    color: black;
+    text-align: center;
+    size: 100px;
+    font-family: "Questrial", sans-serif;
+    background-color: #424242;
+  }
+  
+  h1, h2{
+    color: white;
+  }
+  
+  .dataTable, .header{
+    font-family: "Questrial", sans-serif;
+    background-color: #ff3c3c;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  .dataTable{
+    margin-left: 30px;
+  }
+  .headerText{
+    font-size: 10px;
+    height: 20px;
+  }
+  .example-card {
+    width: 60%;
+    color: #424242;
+    background-color: #424242;
+  }
+  .example-form {
+    background-color: #d5d5d5;
+  
+    width: 60%;
+  }
+  .example-full-width2{
+      width: 10%;
+      padding-left: 10px;
+  
+  }
+  
+  .example-full-width {
+    width: 40%;
+    padding-left: 10px;
+  
+  }
+  
+  .textArea{
+    color: black;
+    font-style: black;
+    font-size: 20px;
+    font-family: "Questrial", sans-serif;
+  }
+  
+  div{
+    padding-top: 15px;
+    padding-left: 20px;
+    width: 90%;
+  }

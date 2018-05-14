@@ -12,28 +12,30 @@
         <br>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su nombre: " class="textArea" [(ngModel)]="UserName" name="UserName">
+          <input matInput placeholder="Ingrese su nombre: " class="textArea" [(ngModel)]="user.UserName" #UserName="ngModel" name="UserName">
         </mat-form-field>
         <br>
         <br>
         <br>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su apodo: " class="textArea" [(ngModel)]="UserNickName" name="UserNickName">
+          <input matInput placeholder="Ingrese su apodo: " class="textArea" [(ngModel)]="user.UserNickName" #UserNickName="ngModel"
+            name="UserNickName">
         </mat-form-field>
         <br>
         <br>
         <br>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su correo: " class="textArea" [(ngModel)]="UserEmail" name="UserEmail">
+          <input matInput placeholder="Ingrese su correo: " class="textArea" [(ngModel)]="user.UserEmail" #UserEmail="ngModel" name="UserEmail">
         </mat-form-field>
         <br>
         <br>
         <br>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su contraseña: " type="password" class="textArea" [(ngModel)]="UserPassword" name="UserPassword">
+          <input matInput placeholder="Ingrese su contraseña: " type="password" class="textArea" [(ngModel)]="user.UserPassword" #UserPassword="ngModel"
+            name="UserPassword">
         </mat-form-field>
         <br>
         <br>

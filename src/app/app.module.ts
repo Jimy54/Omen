@@ -68,6 +68,7 @@ import { LoginComponent } from "./login/login.component";
 import { UploadService } from "./service/upload.service";
 import { SendToken } from "./service/SendToken.service";
 import { BusinessService } from "./service/business.service";
+import { InvoiceComponent } from './invoice/invoice.component';
 
 //Themes Angular
 
@@ -100,7 +101,8 @@ import { BusinessService } from "./service/business.service";
     CategoryDeleteComponent,
     FilterInventaryPipe,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class BusinessComponent implements OnInit {
   _postArray: Business[];
   public business: Business;
   public businessIdentity;
+  identity;
   identity_id;
   public identityBusiness;
   tokenBusiness;
@@ -30,7 +31,7 @@ export class BusinessComponent implements OnInit {
     private businessService: BusinessService
   ) {
     this.identity_id = userService.getIdentity();
-    this.business = new Business("", "", "", this.identity_id.UserID);
+    this.business = new Business("", "", "", this.identity_id);
   }
 
   ngOnInit() {}
@@ -42,8 +43,8 @@ export class BusinessComponent implements OnInit {
       this.snackBar.open("Empresa Registrada", "Aceptar", {
         duration: 700
       });
-      localStorage.setItem("business", JSON.stringify(this.identityBusiness));
-      this.router.navigate(["/empleados"]);
+      localStorage.identity = JSON.stringify(this.identityBusiness);
+      this.router.navigate(["/login"]);
     });
   }
 
