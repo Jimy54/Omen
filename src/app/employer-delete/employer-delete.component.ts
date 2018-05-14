@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material";
 import { EmployerService } from "../service/employer.service";
 import { Employer } from "../models/employer.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-employer-delete",
@@ -17,6 +18,7 @@ export class EmployerDeleteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
     private snackBar: MatSnackBar,
+    private token: SendToken,
     private employerService: EmployerService
   ) {}
 
@@ -26,7 +28,9 @@ export class EmployerDeleteComponent implements OnInit {
 
   deleteEmployee(EmployeeID) {
     this.httpCliente
-      .delete(this.url + "/deleteEmployee/" + EmployeeID, {})
+      .delete(this.url + "/deleteEmployee/" + EmployeeID, {
+        headers: this.token.enviarToke()
+      })
 
       .subscribe(response => {
         this.getEmployers();

@@ -5,6 +5,7 @@ import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
 import { BranchOfficeEditComponent } from "../branch-office-edit/branch-office-edit.component";
 import { BranchOfficeDeleteComponent } from "../branch-office-delete/branch-office-delete.component";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-branch-office",
@@ -12,16 +13,19 @@ import { BranchOfficeDeleteComponent } from "../branch-office-delete/branch-offi
   styleUrls: ["./branch-office.component.css"]
 })
 export class BranchOfficeComponent implements OnInit {
-  constructor(
-    private dialog: MatDialog,
-    private branchOfficeService: BranchOfficeService
-  ) {}
-  private url: string = "http://localhost:4120/branchOffice";
   _postArray: BranchOffice[];
   BranchOfficeID;
   BranchOfficeName;
   BranchOfficePhone;
   BranchOfficeAddress;
+  identity_id;
+  constructor(
+    private dialog: MatDialog,
+    private branchOfficeService: BranchOfficeService,
+    private userService: AuthService
+  ) {}
+  private url: string = "http://localhost:4120/branchOffice";
+
   ngOnInit(): void {
     this.getBranchOffice();
   }

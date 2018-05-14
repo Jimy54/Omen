@@ -35,6 +35,18 @@ export class AuthService {
     });
   }
 
+  business(userData): Observable<any> {
+    let params = JSON.stringify(userData);
+    let headers1 = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this.getToken());
+
+    console.log(userData);
+    return this._http.post(this.url + "/business/createBusiness", params, {
+      headers: headers1
+    });
+  }
+
   getToken() {
     let token = localStorage.getItem("token");
     if (token != "undefined") {
@@ -47,6 +59,16 @@ export class AuthService {
 
   getIdentity() {
     var identity = JSON.parse(localStorage.getItem("identity"));
+    if (identity != "undefined") {
+      this.identity = identity;
+    } else {
+      this.identity = null;
+    }
+    return this.identity;
+  }
+
+  getBusiness(){
+    var identity = JSON.parse(localStorage.getItem("business"));
     if (identity != "undefined") {
       this.identity = identity;
     } else {

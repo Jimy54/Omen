@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
 import { CategoryService } from "../service/category.service";
 import { HttpClient } from "@angular/common/http";
 import { Category } from "../models/category.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-category-edit",
@@ -16,7 +17,8 @@ export class CategoryEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpClient: HttpClient,
     private categoryService: CategoryService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
 
   _postArray: Category[];
@@ -30,10 +32,16 @@ export class CategoryEditComponent implements OnInit {
 
   updateCategory(CategoryID) {
     this.httpClient
-      .put(this.url + "/updateCategory/" + CategoryID, {
-        CategoryDescription: this.data.CategoryDescription,
-        BusinessID: 1
-      })
+      .put(
+        this.url + "/updateCategory/" + CategoryID,
+        {
+          CategoryDescription: this.data.CategoryDescription,
+          BusinessID: 1
+        },
+        {
+          headers: this.token.enviarToke()
+        }
+      )
       .subscribe(response => {
         this.getCategories();
         this.snackBar.open("Categoría Actualizada", "Aceptar", {

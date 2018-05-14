@@ -4,6 +4,7 @@ import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { CategoryComponent } from "../category/category.component";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../models/category.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-category-delete",
@@ -17,7 +18,8 @@ export class CategoryDeleteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
     private snackBar: MatSnackBar,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private token: SendToken
   ) {}
 
   private url = "http://localhost:4120/category/";
@@ -25,7 +27,9 @@ export class CategoryDeleteComponent implements OnInit {
 
   deleteCategory(CategoryID) {
     this.httpCliente
-      .delete(this.url + "deleteCategory/" + CategoryID)
+      .delete(this.url + "deleteCategory/" + CategoryID, {
+        headers: this.token.enviarToke()
+      })
       .subscribe(reponse => {
         this.getCategories();
         this.snackBar.open("Categoría Eliminada", "Aceptar", {

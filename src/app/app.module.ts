@@ -65,6 +65,9 @@ import { FilterInventaryPipe } from "./filter-inventary.pipe";
 import { RegisterComponent } from "./register/register.component";
 import { AuthService } from "./service/auth-service.service";
 import { LoginComponent } from "./login/login.component";
+import { UploadService } from "./service/upload.service";
+import { SendToken } from "./service/SendToken.service";
+import { BusinessService } from "./service/business.service";
 
 //Themes Angular
 
@@ -131,7 +134,10 @@ import { LoginComponent } from "./login/login.component";
     CategoryService,
     BranchOfficeService,
     AuthService,
-    FormBuilder
+    UploadService,
+    SendToken,
+    FormBuilder,
+    BusinessService
   ],
   bootstrap: [AppComponent],
 

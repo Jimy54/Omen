@@ -4,6 +4,7 @@ import { BranchOfficeService } from "../service/branch-office.service";
 import { HttpClient } from "@angular/common/http";
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
 import { BranchOfficeComponent } from "../branch-office/branch-office.component";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-branch-office-edit",
@@ -16,7 +17,8 @@ export class BranchOfficeEditComponent implements OnInit {
     private dialogRef: MatDialogRef<BranchOfficeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
   private url: string = "http://localhost:4120/branchOffice";
   BranchOfficeID;
@@ -29,12 +31,16 @@ export class BranchOfficeEditComponent implements OnInit {
 
   updateBranchOffice(BranchOfficeID) {
     this.httpCliente
-      .put(this.url + "/updateBranchOffice/" + BranchOfficeID, {
-        BranchOfficeName: this.data.BranchOfficeName,
-        BranchOfficePhone: this.data.BranchOfficePhone,
-        BranchOfficeAddress: this.data.BranchOfficeAddress,
-        BusinessID: 1
-      })
+      .put(
+        this.url + "/updateBranchOffice/" + BranchOfficeID,
+        {
+          BranchOfficeName: this.data.BranchOfficeName,
+          BranchOfficePhone: this.data.BranchOfficePhone,
+          BranchOfficeAddress: this.data.BranchOfficeAddress,
+          BusinessID: 1
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(response => {
         this.getBranchOffice();
         this.snackBar.open("Sucursal Actualizada", "Aceptar", {

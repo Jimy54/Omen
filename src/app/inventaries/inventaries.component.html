@@ -22,7 +22,7 @@
       </p>
       <p>Cantidad: {{inventary.Quantity}}</p>
       <p>Precio de Compras: Q{{inventary.Price}}</p>
-      <p>Precio de Venta: Q{{inventary.Price +(inventary.Price * 0.25)}}</p>
+      <p>Precio de Venta: Q{{inventary.Price +(inventary.Price * 0.25)|number}}</p>
     </mat-card-content>
     <mat-card-actions>
       <a class="nav-link" [routerLink]="['/contacts']">Vender</a>

@@ -8,6 +8,7 @@ import { Category } from "../models/category.model";
 import { FilterInventaryPipe } from "../filter-inventary.pipe";
 import { InventaryEditComponent } from "../inventary-edit/inventary-edit.component";
 import { InventaryDeleteComponent } from "../inventary-delete/inventary-delete.component";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-inventaries",
@@ -18,7 +19,8 @@ export class InventariesComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private inventaryService: InventaryService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private token: SendToken
   ) {}
 
   ngOnInit() {

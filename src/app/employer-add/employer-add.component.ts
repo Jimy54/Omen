@@ -10,6 +10,7 @@ import { EmployerService } from "../service/employer.service";
 import { Employer } from "../models/employer.model";
 import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
+import { SendToken } from "../service/SendToken.service";
 
 const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
 @Component({
@@ -46,7 +47,8 @@ export class EmployerAddComponent implements OnInit {
     private branchOfficeService: BranchOfficeService,
     public httpCliente: HttpClient,
     private dialogRef: MatDialogRef<EmployersComponent>,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
 
   ngOnInit() {
@@ -91,7 +93,7 @@ export class EmployerAddComponent implements OnInit {
           BranchOfficeID: this.BranchOfficeID,
           BusinessID: 1
         },
-        { headers: headers }
+        { headers: this.token.enviarToke() }
       )
       .subscribe(response => {
         this.getEmployers();

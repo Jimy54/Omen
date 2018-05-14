@@ -9,6 +9,7 @@ import {
   MatSnackBar
 } from "@angular/material";
 import { ProvidersComponent } from "../providers/providers.component";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-provider-delete",
@@ -21,7 +22,8 @@ export class ProviderDeleteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpClient: HttpClient,
     private providerService: ProviderService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
 
   ngOnInit() {}
@@ -31,7 +33,9 @@ export class ProviderDeleteComponent implements OnInit {
 
   deleteProvider(ProviderID) {
     this.httpClient
-      .delete(this.url + "/deleteProvider/" + ProviderID, {})
+      .delete(this.url + "/deleteProvider/" + ProviderID, {
+        headers: this.token.enviarToke()
+      })
       .subscribe(response => {
         this.getProvider();
         this.snackBar.open("Proveedor Eliminado", "Aceptar", {

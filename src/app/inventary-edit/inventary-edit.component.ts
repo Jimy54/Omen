@@ -6,6 +6,7 @@ import { InventariesComponent } from "../inventaries/inventaries.component";
 import { HttpClient } from "@angular/common/http";
 import { InventaryService } from "../service/inventary.service";
 import { CategoryService } from "../service/category.service";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-inventary-edit",
@@ -19,11 +20,12 @@ export class InventaryEditComponent implements OnInit {
     private httpClient: HttpClient,
     private snackBar: MatSnackBar,
     private inventaryService: InventaryService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private token: SendToken
   ) {}
   _postArray: Inventary[];
   _postArrayCategory: Category[];
-  InventaryID=0;
+  InventaryID = 0;
   InventaryDescription = "";
   Quantity = 0;
   Tax = 0;
@@ -41,16 +43,20 @@ export class InventaryEditComponent implements OnInit {
 
   updateInventary(InventaryID) {
     this.httpClient
-      .put(this.url + "updateInventary/" + InventaryID, {
-        InventaryDescription: this.data.InventaryDescription,
-        Quantity: this.data.Quantity,
-        Tax: this.data.Tax,
-        Price: this.data.Price,
-        InventaryImage: "dada",
-        CodeBar: this.data.CodeBar,
-        BusinessID: 1,
-        CategoryID: this.data.CategoryID
-      })
+      .put(
+        this.url + "updateInventary/" + InventaryID,
+        {
+          InventaryDescription: this.data.InventaryDescription,
+          Quantity: this.data.Quantity,
+          Tax: this.data.Tax,
+          Price: this.data.Price,
+          InventaryImage: "dada",
+          CodeBar: this.data.CodeBar,
+          BusinessID: 1,
+          CategoryID: this.data.CategoryID
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(result => {
         this.getInventaries();
         this.snackBar.open("Empleado Actualizado", "Aceptar", {

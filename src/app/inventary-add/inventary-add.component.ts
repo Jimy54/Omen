@@ -11,6 +11,7 @@ import { InventaryService } from "../service/inventary.service";
 import { Inventary } from "../models/inventary.model";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../models/category.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-inventary-add",
@@ -23,7 +24,8 @@ export class InventaryAddComponent implements OnInit {
     private http: HttpClient,
     private inventaryService: InventaryService,
     private snackBar: MatSnackBar,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private token: SendToken
   ) {}
 
   ngOnInit() {
@@ -48,16 +50,20 @@ export class InventaryAddComponent implements OnInit {
 
   enterInventary() {
     this.http
-      .post(this.url + "createInventary", {
-        InventaryDescription: this.InventaryDescription,
-        Quantity: this.Quantity,
-        Tax: this.Tax,
-        Price: this.Price,
-        InventaryImage: "dada",
-        CodeBar: this.CodeBar,
-        BusinessID: 1,
-        CategoryID: this.CategoryID
-      })
+      .post(
+        this.url + "createInventary",
+        {
+          InventaryDescription: this.InventaryDescription,
+          Quantity: this.Quantity,
+          Tax: this.Tax,
+          Price: this.Price,
+          InventaryImage: "dada",
+          CodeBar: this.CodeBar,
+          BusinessID: 1,
+          CategoryID: this.CategoryID
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(response => {
         this.snackBar.open("Producto agregado", "Aceptar", {
           duration: 700

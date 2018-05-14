@@ -9,6 +9,7 @@ import { CategoryComponent } from "../category/category.component";
 import { HttpClient } from "@angular/common/http";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../models/category.model";
+import { SendToken } from "../service/SendToken.service";
 @Component({
   selector: "app-category-add",
   templateUrl: "./category-add.component.html",
@@ -19,7 +20,8 @@ export class CategoryAddComponent implements OnInit {
     private dialogRef: MatDialogRef<CategoryComponent>,
     private http: HttpClient,
     private categoryService: CategoryService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
   private url: string = "http://localhost:4120/category";
 
@@ -30,10 +32,16 @@ export class CategoryAddComponent implements OnInit {
 
   EnterCategory() {
     this.http
-      .post(this.url + "/createCategory", {
-        CategoryDescription: this.CategoryDescription,
-        BusinessID: 1
-      })
+      .post(
+        this.url + "/createCategory",
+        {
+          CategoryDescription: this.CategoryDescription,
+          BusinessID: 1
+        },
+        {
+          headers: this.token.enviarToke()
+        }
+      )
       .subscribe(response => {
         this.getCategories();
         this.snackBar.open("Categoría Agregada", "Aceptar", { duration: 700 });

@@ -2,17 +2,17 @@
 <form>
   <br>
   <mat-form-field class="form">
-    <input matInput class="right" matInput placeholder="Nombre de la empresa: ">
+    <input matInput class="right" matInput placeholder="Nombre de la empresa: " name="BusinessName" #BusinessName="ngModel" [(ngModel)]="business.BusinessName">
   </mat-form-field>
   <br>
   <mat-form-field class="form">
-    <input matInput class="right" matInput placeholder="País: ">
+    <input matInput class="right" matInput placeholder="País: " name="BusinessCountry" #BusinessCountry="ngModel" [(ngModel)]="business.BusinessCountry">
   </mat-form-field>
   <br>
   <label class="right" matInput placeholder="Logo: ">Logo:</label>
-  <input type="file" placeholder="..." text="...">
+  <input type="file" placeholder="..." text="..." name="BusinessLogo" #BusinessLogo="ngModel" [(ngModel)]="business.BusinessLogo">
   <br>
   <br>
   <br>
-  <button mat-raised-button color="warn" class="button">Agregar Empresa</button>
+  <button mat-raised-button color="warn" (click)="enterBusiness()" class="button">Agregar Empresa</button>
 </form>

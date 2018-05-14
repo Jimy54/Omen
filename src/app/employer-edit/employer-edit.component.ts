@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
 import { MatSnackBar } from "@angular/material";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-employer-edit",
@@ -33,7 +34,8 @@ export class EmployerEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
     private branchOfficeService: BranchOfficeService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
 
   ngOnInit() {
@@ -42,20 +44,24 @@ export class EmployerEditComponent implements OnInit {
 
   updateEmployee(EmployeeID) {
     this.httpCliente
-      .put(this.url + "/updateEmployee/" + EmployeeID, {
-        EmployeeName: this.data.EmployeeName,
-        EmployeePhone: this.data.EmployeePhone,
-        EmployeeAddress: this.data.EmployeeAddress,
-        EmployeeAge: this.data.EmployeeAge,
-        EmployeeEmail: this.data.EmployeeEmail,
-        EmployeeSalary: this.data.EmployeeSalary,
-        EmployeeContratation: this.data.EmployeeContratation,
-        EmployeeRol: this.data.EmployeeRol,
-        EmployeeUser: this.data.EmployeeUser,
-        EmployeePassword: this.data.EmployeePassword,
-        BranchOfficeID: this.data.BranchOfficeID,
-        BusinessID: 1
-      })
+      .put(
+        this.url + "/updateEmployee/" + EmployeeID,
+        {
+          EmployeeName: this.data.EmployeeName,
+          EmployeePhone: this.data.EmployeePhone,
+          EmployeeAddress: this.data.EmployeeAddress,
+          EmployeeAge: this.data.EmployeeAge,
+          EmployeeEmail: this.data.EmployeeEmail,
+          EmployeeSalary: this.data.EmployeeSalary,
+          EmployeeContratation: this.data.EmployeeContratation,
+          EmployeeRol: this.data.EmployeeRol,
+          EmployeeUser: this.data.EmployeeUser,
+          EmployeePassword: this.data.EmployeePassword,
+          BranchOfficeID: this.data.BranchOfficeID,
+          BusinessID: 1
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(result => {
         console.log("Hola");
         this.snackBar.open("Empleado Actualizado", "Aceptar", {

@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material";
 import { InventaryService } from "../service/inventary.service";
 import { Inventary } from "../models/inventary.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-inventary-delete",
@@ -17,7 +18,8 @@ export class InventaryDeleteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
     private snackBar: MatSnackBar,
-    private inventaryService: InventaryService
+    private inventaryService: InventaryService,
+    private token: SendToken
   ) {}
 
   private url = "http://localhost:4120/inventary";
@@ -27,7 +29,9 @@ export class InventaryDeleteComponent implements OnInit {
 
   deleteInventary(InventaryID) {
     this.httpCliente
-      .delete(this.url + "/deleteInventary/" + InventaryID, {})
+      .delete(this.url + "/deleteInventary/" + InventaryID, {
+        headers: this.token.enviarToke()
+      })
 
       .subscribe(response => {
         this.getInventaries();

@@ -6,6 +6,7 @@ import { MatSnackBar } from "@angular/material";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ProviderService } from "../service/provider.service";
 import { Provider } from "../models/provider.model";
+import { SendToken } from "../service/SendToken.service";
 
 const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
 @Component({
@@ -18,7 +19,8 @@ export class ProviderAddComponent implements OnInit {
     private dialogRef: MatDialogRef<ProvidersComponent>,
     private snackBar: MatSnackBar,
     private providerService: ProviderService,
-    public httpCliente: HttpClient
+    public httpCliente: HttpClient,
+    private token: SendToken
   ) {}
   ProviderName;
   ProviderAddress;
@@ -38,13 +40,17 @@ export class ProviderAddComponent implements OnInit {
 
   enterProvider() {
     this.httpCliente
-      .post(this.url + "/createProvider", {
-        ProviderName: this.ProviderName,
-        ProviderAddress: this.ProviderAddress,
-        ProviderPhone: this.ProviderPhone,
-        ProviderEmail: this.ProviderEmail,
-        BusinessID: 1
-      })
+      .post(
+        this.url + "/createProvider",
+        {
+          ProviderName: this.ProviderName,
+          ProviderAddress: this.ProviderAddress,
+          ProviderPhone: this.ProviderPhone,
+          ProviderEmail: this.ProviderEmail,
+          BusinessID: 1
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(response => {
         this.getProvider();
         this.snackBar.open("Proveedor Registrado", "Aceptar", {

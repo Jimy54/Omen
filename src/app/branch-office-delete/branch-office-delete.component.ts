@@ -4,6 +4,7 @@ import { BranchOfficeComponent } from "../branch-office/branch-office.component"
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from "@angular/material";
 import { HttpClient } from "@angular/common/http";
 import { BranchOffice } from "../models/branchOffice.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-branch-office-delete",
@@ -16,7 +17,8 @@ export class BranchOfficeDeleteComponent implements OnInit {
     private dialogRef: MatDialogRef<BranchOfficeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpCliente: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
   private url: string = "http://localhost:4120/branchOffice";
   ngOnInit() {}
@@ -24,7 +26,9 @@ export class BranchOfficeDeleteComponent implements OnInit {
   _postArray: BranchOffice[];
   deleteBranchOffice(BranchOfficeID) {
     this.httpCliente
-      .delete(this.url + "/deleteBranchOffice/" + BranchOfficeID)
+      .delete(this.url + "/deleteBranchOffice/" + BranchOfficeID, {
+        headers: this.token.enviarToke()
+      })
       .subscribe(response => {
         this.getBranchOffice();
         this.snackBar.open("Sucursal Eliminada", "Aceptar", {

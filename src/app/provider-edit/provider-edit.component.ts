@@ -9,6 +9,7 @@ import { ProvidersComponent } from "../providers/providers.component";
 import { ProviderService } from "../service/provider.service";
 import { HttpClient } from "@angular/common/http";
 import { Provider } from "../models/provider.model";
+import { SendToken } from "../service/SendToken.service";
 
 @Component({
   selector: "app-provider-edit",
@@ -21,7 +22,8 @@ export class ProviderEditComponent implements OnInit {
     private providerService: ProviderService,
     private httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private token: SendToken
   ) {}
 
   ProviderID = 0;
@@ -37,13 +39,17 @@ export class ProviderEditComponent implements OnInit {
 
   updateProvider(ProviderID) {
     this.httpClient
-      .put(this.url + "/updateProvider/" + ProviderID, {
-        ProviderName: this.data.ProviderName,
-        ProviderAddress: this.data.ProviderAddress,
-        ProviderPhone: this.data.ProviderPhone,
-        ProviderEmail: this.data.ProviderEmail,
-        BusinessID: 1
-      })
+      .put(
+        this.url + "/updateProvider/" + ProviderID,
+        {
+          ProviderName: this.data.ProviderName,
+          ProviderAddress: this.data.ProviderAddress,
+          ProviderPhone: this.data.ProviderPhone,
+          ProviderEmail: this.data.ProviderEmail,
+          BusinessID: 1
+        },
+        { headers: this.token.enviarToke() }
+      )
       .subscribe(response => {
         this.snackBar.open("Proveedor Actualizado", "Actualizar", {
           duration: 800
