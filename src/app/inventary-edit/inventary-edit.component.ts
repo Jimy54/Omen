@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 import { InventaryService } from "../service/inventary.service";
 import { CategoryService } from "../service/category.service";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-inventary-edit",
@@ -14,6 +15,7 @@ import { SendToken } from "../service/SendToken.service";
   styleUrls: ["./inventary-edit.component.css"]
 })
 export class InventaryEditComponent implements OnInit {
+  identity_id;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<InventariesComponent>,
@@ -21,8 +23,11 @@ export class InventaryEditComponent implements OnInit {
     private snackBar: MatSnackBar,
     private inventaryService: InventaryService,
     private categoryService: CategoryService,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
   _postArray: Inventary[];
   _postArrayCategory: Category[];
   InventaryID = 0;
@@ -52,7 +57,7 @@ export class InventaryEditComponent implements OnInit {
           Price: this.data.Price,
           InventaryImage: "dada",
           CodeBar: this.data.CodeBar,
-          BusinessID: 1,
+          BusinessID: this.identity_id.businessID,
           CategoryID: this.data.CategoryID
         },
         { headers: this.token.enviarToke() }

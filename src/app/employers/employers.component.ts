@@ -89,8 +89,7 @@ export class EmployersComponent implements OnInit {
         EmployeeRol: employeeData.EmployeeRol,
         EmployeeUser: employeeData.EmployeeUser,
         EmployeePassword: employeeData.EmployeePassword,
-        BranchOfficeID: employeeData.BranchOfficeID,
-        BusinessID: 1
+        BranchOfficeID: employeeData.BranchOfficeID
       }
     });
 

@@ -12,6 +12,7 @@ import { Inventary } from "../models/inventary.model";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../models/category.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-inventary-add",
@@ -19,14 +20,18 @@ import { SendToken } from "../service/SendToken.service";
   styleUrls: ["./inventary-add.component.css"]
 })
 export class InventaryAddComponent implements OnInit {
+  identity_id;
   constructor(
     private dialogRef: MatDialogRef<InventariesComponent>,
     private http: HttpClient,
     private inventaryService: InventaryService,
     private snackBar: MatSnackBar,
     private categoryService: CategoryService,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
 
   ngOnInit() {
     this.getCategories();
@@ -59,7 +64,7 @@ export class InventaryAddComponent implements OnInit {
           Price: this.Price,
           InventaryImage: "dada",
           CodeBar: this.CodeBar,
-          BusinessID: 1,
+          BusinessID: this.identity_id.businessID,
           CategoryID: this.CategoryID
         },
         { headers: this.token.enviarToke() }

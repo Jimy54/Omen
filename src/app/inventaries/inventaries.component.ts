@@ -55,7 +55,6 @@ export class InventariesComponent implements OnInit {
         Price: inventaryData.Price,
         InventaryImage: "dada",
         CodeBar: inventaryData.CodeBar,
-        BusinessID: 1,
         CategoryID: inventaryData.CategoryID
       }
     });

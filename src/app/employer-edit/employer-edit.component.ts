@@ -6,6 +6,7 @@ import { BranchOfficeService } from "../service/branch-office.service";
 import { BranchOffice } from "../models/branchOffice.model";
 import { MatSnackBar } from "@angular/material";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-employer-edit",
@@ -25,6 +26,7 @@ export class EmployerEditComponent implements OnInit {
   EmployeeRol = "";
   EmployeeUser;
   EmployeePassword;
+  identity_id;
   private url: string = "http://localhost:4120/employee";
   BranchOfficeID = 0;
   BussinessID: number;
@@ -35,8 +37,11 @@ export class EmployerEditComponent implements OnInit {
     private httpCliente: HttpClient,
     private branchOfficeService: BranchOfficeService,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = userService.getIdentity();
+  }
 
   ngOnInit() {
     this.getBranchOffice();
@@ -58,7 +63,7 @@ export class EmployerEditComponent implements OnInit {
           EmployeeUser: this.data.EmployeeUser,
           EmployeePassword: this.data.EmployeePassword,
           BranchOfficeID: this.data.BranchOfficeID,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         { headers: this.token.enviarToke() }
       )

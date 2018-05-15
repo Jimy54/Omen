@@ -66,8 +66,8 @@ export class ProvidersComponent implements OnInit {
   DeleteDialog(providerData) {
     console.log(providerData);
     let dialogRef = this.dialog.open(ProviderDeleteComponent, {
-      width: "250px",
-      height: "250px",
+      width: "300px",
+      height: "300px",
       data: {
         ProviderID: providerData.ProviderID
       }

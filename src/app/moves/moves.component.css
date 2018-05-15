@@ -11,3 +11,8 @@ button {
 i {
   cursor: pointer;
 }
+
+table {
+  margin-left: 45px;
+  margin-right: 25px;
+}

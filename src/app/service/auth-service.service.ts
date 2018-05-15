@@ -46,6 +46,20 @@ export class AuthService {
     });
   }
 
+  loginEmployee(employeeData, gettoken = null): Observable<any> {
+    if (gettoken != null) {
+      employeeData.gettoken = gettoken;
+    }
+
+    let params = JSON.stringify(employeeData);
+    let headers1 = new HttpHeaders().set("Content-Type", "application/json");
+
+    console.log(employeeData);
+    return this._http.post(this.url + "/employee/loginEmployee", params, {
+      headers: headers1
+    });
+  }
+
   getToken() {
     let token = localStorage.getItem("token");
     if (token != "undefined") {

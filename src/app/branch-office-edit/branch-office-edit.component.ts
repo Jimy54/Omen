@@ -41,8 +41,7 @@ export class BranchOfficeEditComponent implements OnInit {
         {
           BranchOfficeName: this.data.BranchOfficeName,
           BranchOfficePhone: this.data.BranchOfficePhone,
-          BranchOfficeAddress: this.data.BranchOfficeAddress,
-          BusinessID: this.data.identity_id.businessID
+          BranchOfficeAddress: this.data.BranchOfficeAddress
         },
         { headers: this.token.enviarToke() }
       )

@@ -1,4 +1,4 @@
-import { ModuleWithProviders } from "@angular/core";
+import { ModuleWithProviders, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 // Importar componentes
 import { EmployersComponent } from "./employers/employers.component";
@@ -12,6 +12,9 @@ import { RegisterComponent } from "./register/register.component";
 import { BusinessComponent } from "./business/business.component";
 import { LoginComponent } from "./login/login.component";
 import { InvoiceComponent } from "./invoice/invoice.component";
+import { LoginEmployeeComponent } from "./login-employee/login-employee.component";
+import { PurchaseComponent } from "./purchase/purchase.component";
+import { BranchOfficeInventaryComponent } from "./branch-office-inventary/branch-office-inventary.component";
 
 const appRoutes: Routes = [
   {
@@ -57,6 +60,18 @@ const appRoutes: Routes = [
   {
     path: "facturas",
     component: InvoiceComponent
+  },
+  {
+    path: "loginEmpleado",
+    component: LoginEmployeeComponent
+  },
+  {
+    path: "compras",
+    component: PurchaseComponent
+  },
+  {
+    path: "inventarioSucursal",
+    component: BranchOfficeInventaryComponent
   }
 ];
 

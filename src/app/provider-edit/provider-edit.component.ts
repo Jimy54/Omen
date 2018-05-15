@@ -10,6 +10,7 @@ import { ProviderService } from "../service/provider.service";
 import { HttpClient } from "@angular/common/http";
 import { Provider } from "../models/provider.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-provider-edit",
@@ -17,14 +18,18 @@ import { SendToken } from "../service/SendToken.service";
   styleUrls: ["./provider-edit.component.css"]
 })
 export class ProviderEditComponent implements OnInit {
+  identity_id;
   constructor(
     private dialogRef: MatDialogRef<ProvidersComponent>,
     private providerService: ProviderService,
     private httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
 
   ProviderID = 0;
   ProviderName = "";
@@ -46,7 +51,7 @@ export class ProviderEditComponent implements OnInit {
           ProviderAddress: this.data.ProviderAddress,
           ProviderPhone: this.data.ProviderPhone,
           ProviderEmail: this.data.ProviderEmail,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         { headers: this.token.enviarToke() }
       )

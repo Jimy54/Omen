@@ -10,19 +10,24 @@ import { HttpClient } from "@angular/common/http";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../models/category.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 @Component({
   selector: "app-category-add",
   templateUrl: "./category-add.component.html",
   styleUrls: ["./category-add.component.css"]
 })
 export class CategoryAddComponent implements OnInit {
+  identity_id;
   constructor(
     private dialogRef: MatDialogRef<CategoryComponent>,
     private http: HttpClient,
     private categoryService: CategoryService,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
   private url: string = "http://localhost:4120/category";
 
   ngOnInit() {}
@@ -36,7 +41,7 @@ export class CategoryAddComponent implements OnInit {
         this.url + "/createCategory",
         {
           CategoryDescription: this.CategoryDescription,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         {
           headers: this.token.enviarToke()

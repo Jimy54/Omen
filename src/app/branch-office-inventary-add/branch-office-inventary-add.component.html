@@ -4,7 +4,7 @@
 <form class="unicorn-dark-theme">
   <mat-form-field class="form" dividerColor="primary">
 
-    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="InventaryDescription" name="InventaryDescription">
+    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="Description" name="Description">
   </mat-form-field>
 
 
@@ -20,28 +20,23 @@
 
   </mat-form-field>
 
-  <mat-form-field class="form">
-    <input class="right" matInput placeholder="Impuesto" type="number" class="right" value="{{Price * .12 |number}}" [(ngModel)]="Tax"
-      name="Tax">
-    <span matPrefix>Q&nbsp;</span>
-
-  </mat-form-field>
-
-
-
-
 
   <mat-form-field class="form">
     <input class="right" matInput placeholder="Ingrese el codigo de Barra" [(ngModel)]="CodeBar" name="CodeBar">
   </mat-form-field>
 
   <mat-form-field class="form">
-    <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="CategoryID">
-      <mat-option *ngFor="let category of _postArrayCategory" value="{{category.CategoryID}}">{{category.CategoryDescription}}</mat-option>
+    <mat-select placeholder="Producto" name="InventaryID" [(ngModel)]="InventaryID">
+      <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryID}}">{{inventary.InventaryDescription}}</mat-option>
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="form">
+    <mat-select placeholder="Sucursal" name="BranchOfficeID" [(ngModel)]="BranchOfficeID">
+      <mat-option *ngFor="let branchOffice of _postArrayBranchOffice" value="{{branchOffice.BranchOfficeID}}">{{branchOffice.BranchOfficeName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <br>
-  <button mat-raised-button color="warn" (click)="enterInventary()" (click)="onNoClick()">Registro</button>
+  <button mat-raised-button color="warn" (click)="enterBranchOfficeInventary()" (click)="onNoClick()">Registro</button>
 </form>

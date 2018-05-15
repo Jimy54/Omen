@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ProviderService } from "../service/provider.service";
 import { Provider } from "../models/provider.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
 @Component({
@@ -15,13 +16,17 @@ const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
   styleUrls: ["./provider-add.component.css"]
 })
 export class ProviderAddComponent implements OnInit {
+  identity_id;
   constructor(
     private dialogRef: MatDialogRef<ProvidersComponent>,
     private snackBar: MatSnackBar,
     private providerService: ProviderService,
     public httpCliente: HttpClient,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
   ProviderName;
   ProviderAddress;
   ProviderPhone;
@@ -47,7 +52,7 @@ export class ProviderAddComponent implements OnInit {
           ProviderAddress: this.ProviderAddress,
           ProviderPhone: this.ProviderPhone,
           ProviderEmail: this.ProviderEmail,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         { headers: this.token.enviarToke() }
       )

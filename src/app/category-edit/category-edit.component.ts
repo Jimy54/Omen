@@ -5,6 +5,7 @@ import { CategoryService } from "../service/category.service";
 import { HttpClient } from "@angular/common/http";
 import { Category } from "../models/category.model";
 import { SendToken } from "../service/SendToken.service";
+import { AuthService } from "../service/auth-service.service";
 
 @Component({
   selector: "app-category-edit",
@@ -12,14 +13,18 @@ import { SendToken } from "../service/SendToken.service";
   styleUrls: ["./category-edit.component.css"]
 })
 export class CategoryEditComponent implements OnInit {
+  identity_id;
   constructor(
     private dialogRef: MatDialogRef<CategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private httpClient: HttpClient,
     private categoryService: CategoryService,
     private snackBar: MatSnackBar,
-    private token: SendToken
-  ) {}
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+  }
 
   _postArray: Category[];
   CategoryID;
@@ -36,7 +41,7 @@ export class CategoryEditComponent implements OnInit {
         this.url + "/updateCategory/" + CategoryID,
         {
           CategoryDescription: this.data.CategoryDescription,
-          BusinessID: 1
+          BusinessID: this.identity_id.businessID
         },
         {
           headers: this.token.enviarToke()
