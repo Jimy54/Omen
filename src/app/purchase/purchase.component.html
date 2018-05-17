@@ -24,14 +24,13 @@
         </mat-form-field>
         <br>
         <mat-form-field class="select1">
-          <mat-select placeholder="Proveedor" formControlName="ProviderId" [(ngModel)]="ProviderId" name="ProviderId">
-            <mat-option *ngFor="let provider of _postArrayProvider" value="{{provider.ProviderId}}">{{provider.ProviderName}}</mat-option>
-
+          <mat-select placeholder="Proveedor" [(ngModel)]="purchase.ProviderID" name="ProviderID" #ProviderID="ngModel">
+            <mat-option *ngFor="let provider of _postArrayProvider" value="{{provider.ProviderID}}">{{provider.ProviderName}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="Date" [(ngModel)]="Date" name="Date">
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="purchase.Date" name="Date" #Date="ngModel">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker touchUi="true" #picker></mat-datepicker>
         </mat-form-field>
@@ -39,6 +38,7 @@
         <br>
 
       </form>
+      <button mat-raised-button color="warn" class="button" (click)="enterPurchase()">Aceptar</button>
     </mat-card-content>
 
 
@@ -54,6 +54,7 @@
   <br>
 
   <table id="dataTable">
+
     <thead class="dataTable">
       <tr class="header">
         <th style="width: 3%">Cantidad</th>
@@ -65,131 +66,36 @@
     <tr class="trStyle">
       <td>
         <mat-form-field>
-          <input matInput placeholder="Quantity" class="textArea" [(ngModel)]="Quantity" type="number">
+          <input matInput placeholder="Cantidad" class="textArea" [(ngModel)]="Quantity" name="Quantity" type="number">
         </mat-form-field>
       </td>
-      <td>
-        <mat-form-field>
-          <mat-select placeholder="Inventary" formControlName="InventaryId" [(ngModel)]="InventaryId" name="InventaryId">
-            <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryId}}">{{inventary.Inventary}}</mat-option>
 
+      <td>
+
+        <mat-form-field class="select1">
+          <mat-select placeholder="Producto" (change)="selectInventaries()" [(ngModel)]="InventaryID" name="Price" name="InventaryID">
+            <mat-option *ngFor="let provider of _postArrayInventary" value="{{provider.InventaryID}}" value="{{provider.Price}}">{{provider.InventaryDescription}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" type="number">
+          <input matInput placeholder="Price" class="textArea" value="{{Price}}" [(ngModel)]="Price" type="number">
         </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Total" class="textArea" [(ngModel)]="Total" type="number">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr class="trStyle">
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Quantity" class="textArea" [(ngModel)]="Quantity" [ngModelOptions]="{standalone: true}" type="number">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-select placeholder="Inventary" formControlName="InventaryId" [(ngModel)]="InventaryId" name="InventaryId">
-            <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryId}}">{{inventary.Inventary}}</mat-option>
 
-          </mat-select>
-        </mat-form-field>
       </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Total" class="textArea" [(ngModel)]="Total" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr class="trStyle">
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Quantity" class="textArea" [(ngModel)]="Quantity" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-select placeholder="Inventary" formControlName="InventaryId" [(ngModel)]="InventaryId" name="InventaryId">
-            <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryId}}">{{inventary.Inventary}}</mat-option>
 
-          </mat-select>
-        </mat-form-field>
-      </td>
       <td>
         <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Total" class="textArea" [(ngModel)]="Total" type="number" [ngModelOptions]="{standalone: true}">
+          <input matInput placeholder="SubTotal" class="textArea" value="{{Quantity * Price}}" [(ngModel)]="SubTotal" name="SubTotal"
+            type="number">
         </mat-form-field>
       </td>
     </tr>
-    <tr class="trStyle">
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Quantity" class="textArea" [(ngModel)]="Quantity" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-select placeholder="Inventary" formControlName="InventaryId" [(ngModel)]="InventaryId" name="InventaryId">
-            <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryId}}">{{inventary.Inventary}}</mat-option>
 
-          </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" type="number" [ngModelOptions]="{standalone: true}">>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Total" class="textArea" [(ngModel)]="Total" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr class="trStyle">
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Quantity" class="textArea" [(ngModel)]="Quantity" type="number" [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <mat-select placeholder="Inventary" formControlName="InventaryId" [(ngModel)]="InventaryId" name="InventaryId">
-            <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryId}}">{{inventary.Inventary}}</mat-option>
-
-          </mat-select>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" type="number">
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Total" class="textArea" [(ngModel)]="Total" type="number">
-        </mat-form-field>
-      </td>
-    </tr>
 
   </table>
-
+  <button mat-raised-button color="warn" class="button" (click)="enterPurchaseDetaill()">Agregar Compra</button>
 
 
 </body>

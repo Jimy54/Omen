@@ -15,4 +15,10 @@ export class InventaryService {
       headers: this.token.enviarToke()
     });
   }
+
+  getInventaryPrice(): Observable<Inventary> {
+    return this.http.get<Inventary>(this.url, {
+      headers: this.token.enviarToke()
+    });
+  }
 }

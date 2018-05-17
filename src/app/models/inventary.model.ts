@@ -3,6 +3,7 @@ export interface Inventary {
   InventaryDescription;
   Quantity;
   Tax;
+  Price;
   InventaryImage;
   CodeBar;
   BusinessID;

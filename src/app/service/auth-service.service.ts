@@ -37,11 +37,22 @@ export class AuthService {
 
   business(userData): Observable<any> {
     let params = JSON.stringify(userData);
-    let headers1 = new HttpHeaders()
-      .set("Content-Type", "application/json")
+    let headers1 = new HttpHeaders().set("Content-Type", "application/json");
 
     console.log(userData);
     return this._http.post(this.url + "/business/createBusiness", params, {
+      headers: headers1
+    });
+  }
+
+  purchase(purchaseData): Observable<any> {
+    let params = JSON.stringify(purchaseData);
+    let headers1 = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this.getToken());
+
+    console.log(purchaseData);
+    return this._http.post(this.url + "/purchase/createPurchase", params, {
       headers: headers1
     });
   }
@@ -80,7 +91,7 @@ export class AuthService {
     return this.identity;
   }
 
-  getBusiness(){
+  getBusiness() {
     var identity = JSON.parse(localStorage.getItem("business"));
     if (identity != "undefined") {
       this.identity = identity;
