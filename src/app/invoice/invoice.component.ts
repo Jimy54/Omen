@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { SendToken } from "../service/SendToken.service";
 import { MatSnackBar } from "@angular/material";
 import { AuthService } from "../service/auth-service.service";
+import { Invoice } from "../models/invoice.model";
 
 @Component({
   selector: "app-invoice",
@@ -13,6 +14,9 @@ import { AuthService } from "../service/auth-service.service";
 })
 export class InvoiceComponent implements OnInit {
   identity_id;
+  identityInvoice;
+  invoice: Invoice;
+  _postArrayInventary: Inventary[];
   constructor(
     private inventaryService: InventaryService,
     private httpClient: HttpClient,
@@ -21,6 +25,7 @@ export class InvoiceComponent implements OnInit {
     private userService: AuthService
   ) {
     this.identity_id = this.userService.getIdentity();
+    this.invoice = new Invoice("", "", "", "", "", this.identity_id.businessID);
   }
 
   ngOnInit() {
@@ -69,19 +74,34 @@ export class InvoiceComponent implements OnInit {
   }
 
   enterInvoice() {
+    this.userService.invoice(this.invoice).subscribe(data => {
+      this.identityInvoice = data.data.insertId;
+      localStorage.setItem("invoice", JSON.stringify(this.identityInvoice));
+    });
+  }
+  Quantity;
+  InventaryID;
+  Price;
+  SubTotal;
+  Discount;
+
+  enterInvoiceDetaill() {
     this.httpClient
       .post(
-        "http://localhost:4120/invoice/createInvoice",
+        "http://localhost:4120/invoiceDetail/createInvoiceDetail",
         {
-          ClientLastName: this.ClientLastName,
-          ClientName: this.ClientName,
-          ClientNit: this.ClientNit,
-          InvoiceDate: this.InvoiceDate,
-          BusinessID: this.identity_id.businessID
+          Quantity: this.Quantity,
+          Discount: this.Discount,
+          SubTotal: this.SubTotal,
+          InventaryID: this.InventaryID,
+          BusinessID: this.identity_id.businessID,
+          InvoiceID: JSON.parse(localStorage.getItem("invoice"))
         },
         { headers: this.token.enviarToke() }
       )
-      .subscribe(response => {});
+      .subscribe(reponse => {
+        console.log("Hola");
+      });
   }
 
   getInventaries() {

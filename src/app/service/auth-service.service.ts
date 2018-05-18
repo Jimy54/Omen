@@ -57,6 +57,20 @@ export class AuthService {
     });
   }
 
+  invoice(invoiceData): Observable<any> {
+    let params = JSON.stringify(invoiceData);
+    let headers1 = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this.getToken());
+
+    console.log(invoiceData);
+    return this._http.post(this.url + "/invoice/createInvoice", params, {
+      headers: headers1
+    });
+  }
+
+
+
   loginEmployee(employeeData, gettoken = null): Observable<any> {
     if (gettoken != null) {
       employeeData.gettoken = gettoken;

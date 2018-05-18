@@ -1,0 +1,154 @@
+<body>
+  <mat-toolbar color="primary">Despair</mat-toolbar>
+  <br>
+  <mat-grid-list cols="3" rowHeight="300px">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Empleados</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Empleado.jpg" alt="Empleado">
+      <mat-card-content>
+        <p>
+          En este apartado se podra crear y observar los empleados creados por sucursal
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/empleados']">Empleados</a>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Sucursales</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Sucursal.png" alt="Sucursal">
+      <mat-card-content>
+        <p>
+          En este apartado se podra crear y observar las sucursales de tu empresa
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/sucursales']">Sucursales</a>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Categorías</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Categoria.jpg" alt="Categoria">
+      <mat-card-content>
+        <p>
+          En este apartado se podra crear y observar las categorías creados para tus productos
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/categorias']">Categorías</a>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Inventarío</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Inventario.png" alt="Inventario">
+      <mat-card-content>
+        <p>
+          Aquí podras ver tu inventario general de tu empresa
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/productos']">Inventarios</a>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Inventarío por Sucursal</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/inventarioSucursal.jpg" alt="Sucursal">
+      <mat-card-content>
+        <p>
+          Aquí podras ver tu inventario por cada sucursal de tu empresa
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/inventarioSucursal']">Inventario por Sucursal</a>
+      </mat-card-actions>
+    </mat-card>
+
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Facturas</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Factura.png" alt="Factura">
+      <mat-card-content>
+        <p>
+          Podrás realizar ventas dejando constancia del producto vendido
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/facturas']">Facturas</a>
+      </mat-card-actions>
+    </mat-card>
+
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Compras</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Compras.png" alt="Compra">
+      <mat-card-content>
+        <p>
+          Podrás realizar compras dejando constancia del producto vendido
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/compras']">Compras</a>
+      </mat-card-actions>
+    </mat-card>
+
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Movimientos</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Movimientos.png" alt="Movimientos">
+      <mat-card-content>
+        <p>
+          Para tener un mejor control de tus finanzas podras realizar y observar en que has gastado tu dinero
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/movimientos']">Movimientos</a>
+      </mat-card-actions>
+    </mat-card>
+
+
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Proveedores</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="/assets/Proveedores.png" alt="Proveedores">
+      <mat-card-content>
+        <p>
+          Podrás observar los proveedores que has agregado recientemente
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a class="nav-link" [routerLink]="['/proveedores']">Proveedores</a>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-grid-list>
+</body>

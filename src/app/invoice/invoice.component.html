@@ -26,20 +26,21 @@
         <br>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nombre Cliente: " [(ngModel)]="ClientName" name="ClientName" class="textArea">
+          <input matInput placeholder="Nombre Cliente: " [(ngModel)]="invoice.ClientName" #ClientName="ngModel" name="ClientName" class="textArea">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Apellido Cliente: " class="textArea" [(ngModel)]="ClientLastName" name="ClientLastName">
+          <input matInput placeholder="Apellido Cliente: " class="textArea" [(ngModel)]="invoice.ClientLastName" #ClientLastName="ngModel"
+            name="ClientLastName">
         </mat-form-field>
         <br>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="NIT: " class="textArea" [(ngModel)]="ClientNit" name="ClientNit">
+          <input matInput placeholder="NIT: " class="textArea" [(ngModel)]="invoice.ClientNit" #ClientNit="ngModel" name="ClientNit">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="InvoiceDate" name="InvoiceDate">
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="invoice.InvoiceDate" #InvoiceDate="ngModel" name="InvoiceDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker touchUi="true" #picker></mat-datepicker>
         </mat-form-field>
@@ -62,32 +63,56 @@
   <br>
   <br>
 
+
   <table id="dataTable">
+
     <thead class="dataTable">
       <tr class="header">
         <th style="width: 3%">Cantidad</th>
         <th style="width: 3%">Descripción</th>
         <th style="width: 3%">Precio Unitario</th>
+        <th style="width: 3%">Descuento</th>
         <th style="width: 3%">Total</th>
       </tr>
     </thead>
-    <tr>
-      <td id="trA" [(ngModel)]="Quantity" name="Quantity">
-        <br>
+    <tr class="trStyle">
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Cantidad" class="textArea" [(ngModel)]="Quantity" name="Quantity" type="number">
+        </mat-form-field>
       </td>
-      <td id="trA2">
-        <br>
-      </td>
-      <td id="trA3">
-        <br>
-      </td>
-      <td id="trA4">
 
+      <td>
+
+        <mat-form-field class="select1">
+          <mat-select placeholder="Producto" [(ngModel)]="InventaryID" name="InventaryID">
+            <mat-option *ngFor="let provider of _postArray" value="{{provider.InventaryID}}">{{provider.InventaryDescription}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" name="Price" type="number">
+        </mat-form-field>
+
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Descuento" class="textArea" [(ngModel)]="Discount" name="Discount" type="number">
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="SubTotal" class="textArea" value="{{Quantity * Price -Discount}}" [(ngModel)]="SubTotal" name="SubTotal"
+            type="number">
+        </mat-form-field>
       </td>
     </tr>
 
-  </table>
 
+  </table>
+  <button mat-raised-button color="warn" class="button" (click)="enterInvoiceDetaill()">Agregar Factura</button>
 
 
 </body>

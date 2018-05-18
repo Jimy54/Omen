@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  background-position: center;
+  background-attachment: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 900px;
+  max-height: 900px;
+  overflow-x: hidden;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 90px;
+  padding-top: 100px;
+}
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.mat-card-title {
+  font-family: "Questrial", sans-serif;
+  font-size: 20px;
+}
+.example-card {
+  max-width: auto;
+  margin-left: 10px;
+  margin-right: auto;
+  margin-top: 30px;
+  display: inline-block;
+}
+
+body {
+  background-position: center;
+  background-attachment: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 637px;
+  max-height: 637px;
+  overflow-x: hidden;
+}

@@ -15,6 +15,9 @@ import { InvoiceComponent } from "./invoice/invoice.component";
 import { LoginEmployeeComponent } from "./login-employee/login-employee.component";
 import { PurchaseComponent } from "./purchase/purchase.component";
 import { BranchOfficeInventaryComponent } from "./branch-office-inventary/branch-office-inventary.component";
+import { SettingsComponent } from "./settings/settings.component";
+import { PrincipalComponent } from "./principal/principal.component";
+import { NavigationComponent } from "./navigation/navigation.component";
 
 const appRoutes: Routes = [
   {
@@ -72,6 +75,22 @@ const appRoutes: Routes = [
   {
     path: "inventarioSucursal",
     component: BranchOfficeInventaryComponent
+  },
+  {
+    path: "settings",
+    component: SettingsComponent
+  },
+  {
+    path: "",
+    component: PrincipalComponent
+  },
+  {
+    path: "Navegacion",
+    component: NavigationComponent
+  },
+  {
+    path: "**",
+    component: PrincipalComponent
   }
 ];
 

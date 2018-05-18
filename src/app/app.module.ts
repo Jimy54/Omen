@@ -77,6 +77,9 @@ import { BranchOfficeInventaryDeleteComponent } from "./branch-office-inventary-
 import { BranchOfficeInventaryAddComponent } from "./branch-office-inventary-add/branch-office-inventary-add.component";
 import { BranchOfficeInventaryService } from "./service/branch-office-inventary.service";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SettingsComponent } from './settings/settings.component';
+import { PrincipalComponent } from './principal/principal.component';
+import { NavigationComponent } from './navigation/navigation.component';
 //Themes Angular
 
 @NgModule({
@@ -115,7 +118,10 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     BranchOfficeInventaryComponent,
     BranchOfficeInventaryEditComponent,
     BranchOfficeInventaryDeleteComponent,
-    BranchOfficeInventaryAddComponent
+    BranchOfficeInventaryAddComponent,
+    SettingsComponent,
+    PrincipalComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

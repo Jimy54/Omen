@@ -8,6 +8,7 @@ import { SendToken } from "../service/SendToken.service";
 import { Purchase } from "../models/purchase.Model";
 import { ProviderService } from "../service/provider.service";
 import { InventaryService } from "../service/inventary.service";
+import { ThrowStmt } from "@angular/compiler";
 @Component({
   selector: "purchase",
   templateUrl: "./purchase.component.html",
@@ -29,6 +30,8 @@ export class PurchaseComponent implements OnInit {
   Price;
   SubTotal;
 
+  PriceInv;
+
   purchase: Purchase;
 
   constructor(
@@ -45,11 +48,21 @@ export class PurchaseComponent implements OnInit {
 
   _postArrayProvider: Provider[];
   _postArrayInventary: Inventary[];
+  post: Inventary[];
 
   ngOnInit() {
     this.getInventaries();
     this.getProvider();
-    this.selectInventaries();
+
+    /*
+    this.Price = this._postArrayInventary.filter(function(c){
+      for (let x = 0; x < this._postArrayInventary.length; x++) {
+        if (this._postArrayInventary[x].InventaryID === id) {
+          return this._postArrayInventary[x].Price;
+        }
+      }
+    }
+    }*/
   }
 
   addInput() {
@@ -124,15 +137,15 @@ export class PurchaseComponent implements OnInit {
     this.inventaryService
       .getInventary()
       .subscribe(
-        resultArray => (this._postArrayInventary = resultArray),
+        resultArray => (
+          (this._postArrayInventary = resultArray),
+          console.log(this._postArrayInventary.length)
+        ),
         error => console.log("Error " + error)
       );
   }
 
-  selectInventaries() {
-    this.inventaryService.getInventaryPrice().subscribe(data => {
-      this.Price = data.Price; 
-      console.log(this.Price)
-    });
+  selectInventaries(id) {
+   
   }
 }

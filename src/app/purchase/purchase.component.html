@@ -73,14 +73,14 @@
       <td>
 
         <mat-form-field class="select1">
-          <mat-select placeholder="Producto" (change)="selectInventaries()" [(ngModel)]="InventaryID" name="Price" name="InventaryID">
-            <mat-option *ngFor="let provider of _postArrayInventary" value="{{provider.InventaryID}}" value="{{provider.Price}}">{{provider.InventaryDescription}}</mat-option>
+          <mat-select placeholder="Producto" [(ngModel)]="InventaryID" name="InventaryID">
+            <mat-option *ngFor="let provider of _postArrayInventary" value="{{provider.InventaryID}}">{{provider.InventaryDescription}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field>
-          <input matInput placeholder="Price" class="textArea" value="{{Price}}" [(ngModel)]="Price" type="number">
+          <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" name="Price" type="number">
         </mat-form-field>
 
       </td>
