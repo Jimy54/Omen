@@ -1,35 +1,86 @@
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
+</head>
+
 <body>
+  <mat-toolbar color="warn">
+
+    <h1>Despair</h1>
+
+  </mat-toolbar>
+
+  <div class="divTabs">
+    <mat-tab-group>
+      <mat-tab label="Administrador" class="matTab">
+        <div>
+          <mat-card class="example-card">
+            <mat-card-header>
+              <img src="../assets/user.png" class="img-fluid pull-xs-left" alt="...">
+            </mat-card-header>
+          </mat-card>
+          <mat-card-content class="example-form">
+            <form>
+
+              <br>
+              <br>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ingrese su correo: " name="UserEmail" #UserEmail="ngModel" [(ngModel)]="user.UserEmail" class="textArea">
+              </mat-form-field>
+              <br>
+              <br>
+              <br>
+              <br>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ingrese su contrasena: " type="password" name="UserPassword" #UserPassword="ngModel" [(ngModel)]="user.UserPassword"
+                  class="textArea">
+              </mat-form-field>
+
+              <button mat-raised-button color="warn" class="button" (click)="onSubmit()">Iniciar Sesion</button>
+              <br>
+              <br>
+            </form>
+          </mat-card-content>
 
 
-  <div>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <h2>Login: </h2>
-      </mat-card-header>
-    </mat-card>
-    <mat-card-content class="example-form">
-      <form>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su correo: " name="UserEmail" #UserEmail="ngModel" [(ngModel)]="user.UserEmail" class="textArea">
-        </mat-form-field>
-        <br>
-        <br>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Ingrese su contrasena: " type="password" name="UserPassword" #UserPassword="ngModel" [(ngModel)]="user.UserPassword"
-            class="textArea">
-        </mat-form-field>
+        </div>
+      </mat-tab>
+      <mat-tab label="Empleado" class="matTab">
+        <div>
+          <mat-card class="example-card">
+            <mat-card-header>
+              <img src="../assets/users.png" class="img-fluid pull-xs-left" alt="...">
+            </mat-card-header>
+          </mat-card>
+          <mat-card-content class="example-form">
+            <form>
+              <br>
+              <br>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ingrese su nombre de usuario: " name="EmployeeUser" #EmployeeUser="ngModel" [(ngModel)]="employee.EmployeeUser"
+                  class="textArea">
+              </mat-form-field>
+              <br>
+              <br>
+              <br>
+              <br>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ingrese su contrasena: " type="password" name="EmployeePassword" #EmployeePassword="ngModel"
+                  [(ngModel)]="employee.EmployeePassword" class="textArea">
+              </mat-form-field>
 
-        <button mat-raised-button color="warn" class="button" (click)="onSubmit()">Registrarse</button>
-        <br>
-        <br>
-      </form>
-    </mat-card-content>
+              <button mat-raised-button color="warn" class="button" (click)="onSubmitEmployee()">Iniciar Sesion</button>
+              <br>
+              <br>
+            </form>
+          </mat-card-content>
 
 
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 
 

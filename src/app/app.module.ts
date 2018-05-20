@@ -81,6 +81,7 @@ import { SettingsComponent } from "./settings/settings.component";
 import { PrincipalComponent } from "./principal/principal.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { NgxBarcodeModule } from "ngx-barcode";
+import {MatTabsModule} from '@angular/material/tabs';
 //Themes Angular
 
 @NgModule({
@@ -133,6 +134,7 @@ import { NgxBarcodeModule } from "ngx-barcode";
     FlexLayoutModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatTabsModule,
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,

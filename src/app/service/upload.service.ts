@@ -4,7 +4,9 @@ import { Injectable } from "@angular/core";
 export class UploadService {
   public url: string;
 
-  constructor() {}
+  constructor() {
+    this.url = "http://localhost:4120";
+  }
 
   makeFileRequest(
     url: string,

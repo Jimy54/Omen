@@ -16,19 +16,20 @@ h2 {
   font-size: 30px;
 }
 .example-card {
-  width: 40%;
+  width: 100%;
   color: #424242;
-  background-color: #424242;
+  background-color: rgba(108, 108, 108, 0.61);
 }
 .example-form {
-  background-color: #fba1a1;
+  background-color: rgba(122, 122, 122, 0.49);
 
-  width: 40%;
+  width: 100%;
 }
 
 .example-full-width {
   width: 90%;
   padding-left: 10px;
+  color: white;
 }
 .textArea {
   color: black;
@@ -47,9 +48,26 @@ div {
   margin-left: 30%;
 }
 body {
-  background-color: #c4c4c4;
+  background-color: #ffffff;
   background-size: cover;
   background-size: 100%;
   height: 900px;
   max-height: 900px;
+  background-position: center;
+  background: url("/assets/luces.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.divTabs {
+  width: 70%;
+  padding-left: 30%;
+}
+.matTab {
+  width: 50px;
+}
+label {
+  color: white;
+}
+mat-tab-group {
+  color: white;
 }
