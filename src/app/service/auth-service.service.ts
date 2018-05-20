@@ -21,6 +21,21 @@ export class AuthService {
     });
   }
 
+  updateUser(user: Users): Observable<any> {
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("Authorization", this.getToken());
+
+    return this._http.put(
+      this.url + "/user/updateUser/" + user.UserID,
+      params,
+      {
+        headers: headers
+      }
+    );
+  }
+
   login(userData, gettoken = null): Observable<any> {
     if (gettoken != null) {
       userData.gettoken = gettoken;
@@ -68,8 +83,6 @@ export class AuthService {
       headers: headers1
     });
   }
-
-
 
   loginEmployee(employeeData, gettoken = null): Observable<any> {
     if (gettoken != null) {

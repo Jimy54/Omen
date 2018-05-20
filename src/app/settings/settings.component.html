@@ -8,14 +8,14 @@
     <form class="form-signin">
       <span id="reauth-email" class="reauth-email"></span>
 
-      <input id="inputName" class="form-control" name="name" [(ngModel)]="userName">
-      <input id="UserEmail" class="form-control" name="userEmail" [(ngModel)]="userEmail" placeholder="Email address">
-      <input type="password" id="inputPassword" name="userPassword" [(ngModel)]="userPassword" class="form-control" placeholder="Password"
-        required>
+      <input id="inputName" class="form-control" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName">
+      <input id="UserEmail" class="form-control" name="UserEmail" [(ngModel)]="user.UserEmail" #UserEmail="ngModel" placeholder="Email address">
+      <input type="password" id="inputPassword" name="UserPassword" [(ngModel)]="user.UserPassword" #UserPassword="ngModel" class="form-control"
+        placeholder="Password" required>
 
       <div class="wrapper">
         <span class="group-btn  col-lg-6">
-          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="onSubmit()">Acutalizar</button>
+          <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="onSubmit()">Actualizar</button>
         </span>
         <span class="group-btn col-lg-6">
           <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="logout()" type="submit">Salir</button>

@@ -21,7 +21,7 @@
   </mat-form-field>
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Impuesto" type="number" class="right" [(ngModel)]="data.Tax" value="{{data.Price * .12 |number}}"
+    <input class="right" matInput placeholder="Impuesto" type="number" class="right" [(ngModel)]="data.Tax" 
       name="Tax">
     <span matPrefix>Q&nbsp;</span>
 
@@ -36,8 +36,8 @@
   </mat-form-field>
 
   <mat-form-field class="form">
-    <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="data.CategoryDescription">
-      <mat-option *ngFor="let category of _postArrayCategory" value="{{category.CategoryID}}">{{category.CategoryDescription}}</mat-option>
+    <mat-select placeholder="Categoría del producto" name="CategoryID" [(ngModel)]="data.CategoryID">
+      <mat-option *ngFor="let category of _postArrayCategory" [value]="category.CategoryID">{{category.CategoryDescription}}</mat-option>
     </mat-select>
   </mat-form-field>
 

@@ -21,6 +21,10 @@ button {
   display: inline-block;
 }
 
+svg {
+  margin-left: 70px;
+}
+
 input {
   margin-left: 50px;
 }

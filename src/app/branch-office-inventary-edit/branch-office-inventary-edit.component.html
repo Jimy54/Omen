@@ -1,3 +1,42 @@
-<p>
-  branch-office-inventary-edit works!
-</p>
+<h1>Ingrese una nuevo Producto</h1>
+<mat-divider></mat-divider>
+<br>
+<form class="unicorn-dark-theme">
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="data.Description" name="Description">
+  </mat-form-field>
+
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese la cantidad" type="number" [(ngModel)]="data.Quantity" name="Quantity">
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el precio" type="number" class="right" [(ngModel)]="data.Price" name="Price">
+    <span matPrefix>Q&nbsp;</span>
+
+  </mat-form-field>
+
+
+  <mat-form-field class="form">
+    <input class="right" matInput placeholder="Ingrese el codigo de Barra" [(ngModel)]="data.CodeBar" name="CodeBar">
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Producto" name="InventaryID" [(ngModel)]="data.InventaryID">
+      <mat-option *ngFor="let inventary of _postArrayInventary" [value]="inventary.InventaryID">{{inventary.InventaryDescription}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form">
+    <mat-select placeholder="Sucursal" name="BranchOfficeID" [(ngModel)]="data.BranchOfficeID">
+      <mat-option *ngFor="let branchOffice of _postArrayBranchOffice" [value]="branchOffice.BranchOfficeID">{{branchOffice.BranchOfficeName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="warn" (click)="updateInventary(data.BranchOfficeInventaryID)" (click)="onNoClick()">Registro</button>
+</form>

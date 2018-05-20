@@ -24,11 +24,12 @@ export class EmployerEditComponent implements OnInit {
   EmployeeSalary = 0;
   EmployeeContratation: Date;
   EmployeeRol = "";
+
   EmployeeUser;
   EmployeePassword;
   identity_id;
   private url: string = "http://localhost:4120/employee";
-  BranchOfficeID = 0;
+  BranchOfficeID;
   BussinessID: number;
 
   constructor(
@@ -41,9 +42,11 @@ export class EmployerEditComponent implements OnInit {
     private userService: AuthService
   ) {
     this.identity_id = userService.getIdentity();
+    console.log(data)
   }
 
   ngOnInit() {
+    
     this.getBranchOffice();
   }
 

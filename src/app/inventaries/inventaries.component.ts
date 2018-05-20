@@ -9,6 +9,7 @@ import { FilterInventaryPipe } from "../filter-inventary.pipe";
 import { InventaryEditComponent } from "../inventary-edit/inventary-edit.component";
 import { InventaryDeleteComponent } from "../inventary-delete/inventary-delete.component";
 import { SendToken } from "../service/SendToken.service";
+declare var JsBarcode: any;
 
 @Component({
   selector: "app-inventaries",
@@ -23,13 +24,25 @@ export class InventariesComponent implements OnInit {
     private token: SendToken
   ) {}
 
+  search = "Zapatos Nike";
+  canvas: HTMLCanvasElement;
+
   ngOnInit() {
-    this.getInventaries();
+    const data = {};
+    this.getInventaries()
+    this.inventaryService.getInventary2().subscribe(res => {
+      let hola = res["data"];
+      console.log(hola);
+      let codeBar = hola["data"].map(res => res.CodeBar);
+      var splitted = codeBar.join(" ");
+      console.log(splitted);
+      var a1 = new Array();
+      JsBarcode(".barcode").init(); // Create space between the barcodes.render(); // Create space between the barcodes
+    });
   }
 
   _postArray: Inventary[];
   _postArrayCategory: Category[];
-  search = "Zapatos Nike";
 
   EnterDialog(): void {
     let dialogRef = this.dialog.open(InventaryAddComponent, {
@@ -91,7 +104,7 @@ export class InventariesComponent implements OnInit {
     this.categoryService
       .getCategory()
       .subscribe(
-        resultArray => (this._postArrayCategory = resultArray),
+        resultArray => (this._postArrayCategory = resultArray, JsBarcode(".barcode").init()),
         error => console.log("Error " + error)
       );
   }

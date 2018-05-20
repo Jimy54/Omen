@@ -41,7 +41,7 @@ export class InventaryAddComponent implements OnInit {
   InventaryID;
   InventaryDescription = "";
   Quantity = 0;
-  Tax = 0;
+  Tax;
   Price = 0;
   InventaryImage = "";
   CodeBar;

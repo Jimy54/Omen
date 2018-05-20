@@ -8,7 +8,7 @@ import { InventaryService } from "../service/inventary.service";
 import { CategoryService } from "../service/category.service";
 import { SendToken } from "../service/SendToken.service";
 import { AuthService } from "../service/auth-service.service";
-
+var JsBarcode:any
 @Component({
   selector: "app-inventary-edit",
   templateUrl: "./inventary-edit.component.html",
@@ -63,6 +63,7 @@ export class InventaryEditComponent implements OnInit {
         { headers: this.token.enviarToke() }
       )
       .subscribe(result => {
+
         this.getInventaries();
         this.snackBar.open("Empleado Actualizado", "Aceptar", {
           duration: 700

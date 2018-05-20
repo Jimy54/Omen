@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../service/auth-service.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { Users } from "../models/user.model";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-settings",
@@ -9,23 +11,38 @@ import { Router } from "@angular/router";
 })
 export class SettingsComponent implements OnInit {
   identity;
-  userName;
-  nickName;
-  userEmail;
-  userPassword;
+  UserName;
+  NickName;
+  UserEmail;
+  UserPassword;
+  private user: Users;
+  public token;
+  public status: string;
 
-  constructor(private userService: AuthService, private router: Router) {
-    this.identity = userService.getIdentity();
+  constructor(
+    private userService: AuthService,
+    private router: Router,
+    private _route: ActivatedRoute,
+    private snackBar: MatSnackBar
+  ) {
+    this.user = this.userService.getIdentity();
+    this.identity = this.user;
+    this.token = this.userService.getToken();
   }
 
   ngOnInit() {
-    this.userName = this.identity.UserName;
-    this.nickName = this.identity.NickName;
-    this.userEmail = this.identity.UserEmail;
-    this.userPassword = this.identity.UserPassword;
+    console.log(this.user);
   }
 
-  
+  onSubmit() {
+    this.userService.updateUser(this.user).subscribe(response => {
+      localStorage.setItem("identity", JSON.stringify(this.user));
+      this.identity = this.user;
+      this.snackBar.open("Datos Actualizados", "Aceptar", {
+        duration: 900
+      });
+    });
+  }
 
   logout() {
     localStorage.clear();

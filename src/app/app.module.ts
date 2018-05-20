@@ -76,10 +76,11 @@ import { BranchOfficeInventaryEditComponent } from "./branch-office-inventary-ed
 import { BranchOfficeInventaryDeleteComponent } from "./branch-office-inventary-delete/branch-office-inventary-delete.component";
 import { BranchOfficeInventaryAddComponent } from "./branch-office-inventary-add/branch-office-inventary-add.component";
 import { BranchOfficeInventaryService } from "./service/branch-office-inventary.service";
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { SettingsComponent } from './settings/settings.component';
-import { PrincipalComponent } from './principal/principal.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { SettingsComponent } from "./settings/settings.component";
+import { PrincipalComponent } from "./principal/principal.component";
+import { NavigationComponent } from "./navigation/navigation.component";
+import { NgxBarcodeModule } from "ngx-barcode";
 //Themes Angular
 
 @NgModule({
@@ -136,6 +137,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     MatToolbarModule,
     MatButtonModule,
     MatDialogModule,
+    NgxBarcodeModule,
     MatListModule,
     MatDatepickerModule,
     MatTableModule,
@@ -158,6 +160,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     AuthService,
     UploadService,
     SendToken,
+
     FormBuilder,
     BusinessService,
     BranchOfficeInventaryService
@@ -185,6 +188,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     BranchOfficeInventaryAddComponent,
     BranchOfficeInventaryComponent,
     BranchOfficeEditComponent,
+    BranchOfficeInventaryDeleteComponent,
+    BranchOfficeInventaryEditComponent,
     BranchOfficeInventaryDeleteComponent
   ]
 })

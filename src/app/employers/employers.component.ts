@@ -36,11 +36,12 @@ export class EmployersComponent implements OnInit {
   EmployeeRol = "";
   EmployeeUser;
   EmployeePassword;
-  BranchOfficeID = 0;
+  BranchOfficeID;
   BusinessID;
 
   ngOnInit() {
     this.getEmployers();
+    
   }
 
   EnterDialog(): void {

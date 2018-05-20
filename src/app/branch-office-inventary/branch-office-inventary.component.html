@@ -24,12 +24,14 @@
       <p>Precio de Compras: Q{{inventary.Price}}</p>
       <p>Sucursal: {{inventary.BranchOfficeName}}</p>
       <p>Precio de Venta: Q{{inventary.Price +(inventary.Price * 0.25)|number}}</p>
+      <img class="barcode" [attr.jsbarcode-value]="inventary.CodeBar">
+
     </mat-card-content>
     <mat-card-actions>
       <a class="nav-link" [routerLink]="['/contacts']">Vender</a>
       <i class="material-icons" (click)="UpdateDialog(inventary)">mode_edit</i>
 
-      <i class="material-icons" id="delete" (click)="deleteDialog(inventary)">delete_forever</i>
+      <i class="material-icons" id="delete" (click)="DeleteDiaglog(inventary)">delete_forever</i>
     </mat-card-actions>
   </mat-card>
 
