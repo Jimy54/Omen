@@ -1,24 +1,26 @@
 <h1>Ingrese un nuevo movimiento</h1>
 <mat-divider></mat-divider>
 <br>
-<form class="unicorn-dark-theme">
+<form class="unicorn-dark-theme" [formGroup]="fbRegistrer">
   <mat-form-field class="form" dividerColor="primary">
 
-    <input matInput placeholder="Ingrese la descripción del movimiento">
+    <input matInput placeholder="Ingrese la descripción del movimiento" formControlName="Description" [(ngModel)]="Description"
+      name="Description">
   </mat-form-field>
 
 
   <mat-form-field class="form">
-    <input class="right" matInput placeholder="Ingrese el monto del movimiento " type="number">
+    <input class="right" matInput placeholder="Ingrese el monto del movimiento " type="number" formControlName="Total" [(ngModel)]="Total"
+      name="Total">
   </mat-form-field>
 
 
   <mat-form-field class="form">
-    <input matInput [matDatepicker]="picker" placeholder="Fecha del movimiento">
+    <input matInput [matDatepicker]="picker" placeholder="Fecha del movimiento" formControlName="Date" [(ngModel)]="Date" name="Date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker touchUi="true" #picker></mat-datepicker>
   </mat-form-field>
 
   <br>
-  <button mat-raised-button color="warn" (click)="onNoClick()">Registro</button>
+  <button mat-raised-button color="warn" (click)="enterMoves()" (click)="onNoClick()">Registro</button>
 </form>

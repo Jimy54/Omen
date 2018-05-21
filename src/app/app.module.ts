@@ -81,7 +81,11 @@ import { SettingsComponent } from "./settings/settings.component";
 import { PrincipalComponent } from "./principal/principal.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { NgxBarcodeModule } from "ngx-barcode";
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from "@angular/material/tabs";
+import { StatisticsComponent } from "./statistics/statistics.component";
+import { MovesService } from "./service/moves.service";
+import { MoveEditComponent } from "./move-edit/move-edit.component";
+import { MoveDeleteComponent } from "./move-delete/move-delete.component";
 //Themes Angular
 
 @NgModule({
@@ -123,7 +127,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     BranchOfficeInventaryAddComponent,
     SettingsComponent,
     PrincipalComponent,
-    NavigationComponent
+    NavigationComponent,
+    StatisticsComponent,
+    MoveEditComponent,
+    MoveDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -162,7 +169,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     AuthService,
     UploadService,
     SendToken,
-
+    MovesService,
     FormBuilder,
     BusinessService,
     BranchOfficeInventaryService
@@ -192,7 +199,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     BranchOfficeEditComponent,
     BranchOfficeInventaryDeleteComponent,
     BranchOfficeInventaryEditComponent,
-    BranchOfficeInventaryDeleteComponent
+    BranchOfficeInventaryDeleteComponent,
+    MoveAddComponent,
+    MoveEditComponent,
+    MoveDeleteComponent
   ]
 })
 export class AppModule {

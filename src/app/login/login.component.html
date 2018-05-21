@@ -51,7 +51,7 @@
         <div>
           <mat-card class="example-card">
             <mat-card-header>
-              <img src="../assets/users.png" class="img-fluid pull-xs-left" alt="...">
+              <img src="../assets/user.png" class="img-fluid pull-xs-left" alt="...">
             </mat-card-header>
           </mat-card>
           <mat-card-content class="example-form">
@@ -59,7 +59,7 @@
               <br>
               <br>
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Ingrese su nombre de usuario: " name="EmployeeUser" #EmployeeUser="ngModel" [(ngModel)]="employee.EmployeeUser"
+                <input matInput placeholder="Ingrese su correo: " name="EmployeeUser" #EmployeeUser="ngModel" [(ngModel)]="employee.EmployeeUser"
                   class="textArea">
               </mat-form-field>
               <br>
@@ -71,7 +71,7 @@
                   [(ngModel)]="employee.EmployeePassword" class="textArea">
               </mat-form-field>
 
-              <button mat-raised-button color="warn" class="button" (click)="onSubmitEmployee()">Iniciar Sesion</button>
+              <button mat-raised-button color="warn" class="button" (click)="onSubmitEmployee()">Registrarse</button>
               <br>
               <br>
             </form>

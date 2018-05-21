@@ -5,14 +5,54 @@ h1 {
 }
 
 button {
+  margin-left: 25px;
+}
+
+#add {
   float: right;
+}
+
+table {
+  margin-left: 45px;
+  margin-right: 25px;
+}
+
+thead {
+  color: white;
+  background-color: #b71c1c;
+}
+
+body {
+  overflow: hidden;
+}
+
+input[type="text"] {
+  width: 230px;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+}
+
+.example-spacer {
+  flex: 0.9 0.9 auto;
+}
+
+.example-spacer1 {
+  flex: 1.3 1.3 auto;
 }
 
 i {
   cursor: pointer;
 }
 
-table {
-  margin-left: 45px;
-  margin-right: 25px;
+/* When the input field gets focus, change its width to 100% */
+input[type="text"]:focus {
+  width: 400px;
+}
+
+input {
+  margin-left: 3%;
+}
+
+.title {
+  font-size: 39px;
 }

@@ -85,10 +85,6 @@ export class AuthService {
   }
 
   loginEmployee(employeeData, gettoken = null): Observable<any> {
-    if (gettoken != null) {
-      employeeData.gettoken = gettoken;
-    }
-
     let params = JSON.stringify(employeeData);
     let headers1 = new HttpHeaders().set("Content-Type", "application/json");
 

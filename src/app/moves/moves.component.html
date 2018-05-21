@@ -1,31 +1,48 @@
-<h1>Movimientos</h1>
+<body>
+  <mat-toolbar>
+    <span class="example-spacer1"></span>
 
-<button mat-fab color="primary" id="add" (click)="EnterDialog()">
-  <i class="material-icons">library_add</i>
-</button>
-<br>
-<div>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>Nombre</th>
-        <th>Telefono</th>
-        <th>Dirección</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>'HOla'</td>
-        <td>"dada"</td>
-        <td>"ea"</td>
-        <td>
+    <h1 class="title">Movimientos</h1>
 
-          <i class="material-icons">mode_edit</i>
-        </td>
+    <span class="example-spacer"></span>
 
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <button mat-fab color="primary" id="add" (click)="EnterDialog()">
+      <i class="material-icons">library_add</i>
+    </button>
+
+
+
+
+
+  </mat-toolbar>
+
+
+  <br>
+  <div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Código</th>
+          <th>Descripcion</th>
+          <th>Fecha</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of _postArray">
+          <td>{{list.MoveID}}</td>
+          <td>{{list.Description}}</td>
+          <td>{{list.Date |date:'d/M/y'}}</td>
+          <td>{{list.Total}}</td>
+          <td>
+
+            <i class="material-icons" (click)="UpdateDialog(list)">mode_edit</i>
+            <i class="material-icons" (click)="DeleteDialog(list)">delete_forever</i>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
 <app-menu></app-menu>

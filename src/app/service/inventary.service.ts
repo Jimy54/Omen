@@ -22,8 +22,15 @@ export class InventaryService {
       headers: this.token.enviarToke()
     });
   }
-
   getInventary2() {
+    return this.http
+      .get(this.url2, {
+        headers: this.token.enviarToke()
+      })
+      .map(result => result);
+  }
+
+  getInventaryPrice2() {
     return this.http
       .get(this.url2, {
         headers: this.token.enviarToke()

@@ -9,12 +9,19 @@ export class EmployerService {
   constructor(private http: HttpClient, private token: SendToken) {}
 
   url = "http://localhost:4120/employee/listEmployees";
+  url2 = "http://localhost:4120/employee/listEmployees2";
 
   getEmployer(): Observable<Employer[]> {
     return this.http.get<Employer[]>(this.url, {
       headers: this.token.enviarToke()
     });
   }
-  
 
+  getEmployer2() {
+    return this.http
+      .get(this.url2, {
+        headers: this.token.enviarToke()
+      })
+      .map(result => result);
+  }
 }

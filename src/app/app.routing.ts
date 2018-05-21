@@ -18,6 +18,7 @@ import { BranchOfficeInventaryComponent } from "./branch-office-inventary/branch
 import { SettingsComponent } from "./settings/settings.component";
 import { PrincipalComponent } from "./principal/principal.component";
 import { NavigationComponent } from "./navigation/navigation.component";
+import { StatisticsComponent } from "./statistics/statistics.component";
 
 const appRoutes: Routes = [
   {
@@ -87,6 +88,10 @@ const appRoutes: Routes = [
   {
     path: "Navegacion",
     component: NavigationComponent
+  },
+  {
+    path: "estadisticas",
+    component: StatisticsComponent
   },
   {
     path: "**",

@@ -9,8 +9,6 @@
 
 
 
-  <input type="text">
-
 
   <br>
   <br>
@@ -29,7 +27,7 @@
         <p>Cantidad: {{inventary.Quantity}}</p>
         <p>Precio de Compras: Q{{inventary.Price}}</p>
         <p>Precio de Venta: Q{{inventary.Price +(inventary.Price * 0.25)|number}}</p>
-   <img class="barcode" [attr.jsbarcode-value]="inventary.CodeBar">
+        <img class="barcode" [attr.jsbarcode-value]="inventary.CodeBar">
 
       </mat-card-content>
       <mat-card-actions>
@@ -45,7 +43,7 @@
   </mat-grid-list>
 
 
-    
+
 
 
 

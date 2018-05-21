@@ -1,18 +1,40 @@
-<h1>Empresa</h1>
-<form>
-  <br>
-  <mat-form-field class="form">
-    <input matInput class="right" matInput placeholder="Nombre de la empresa: " name="BusinessName" #BusinessName="ngModel" [(ngModel)]="business.BusinessName">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="form">
-    <input matInput class="right" matInput placeholder="País: " name="BusinessCountry" #BusinessCountry="ngModel" [(ngModel)]="business.BusinessCountry">
-  </mat-form-field>
-  <br>
-  <label class="right" matInput placeholder="Logo: ">Logo:</label>
-  <input type="file" placeholder="..." text="..." name="BusinessLogo" #BusinessLogo="ngModel" [(ngModel)]="business.BusinessLogo">
-  <br>
-  <br>
-  <br>
-  <button mat-raised-button color="warn" (click)="enterBusiness()" class="button">Agregar Empresa</button>
-</form>
+<body>
+  <mat-toolbar color="warn">
+
+    <h1>Despair</h1>
+
+  </mat-toolbar>
+
+  <div class="divCard">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <h2>Empresa: </h2>
+        <img src="../assets/bank.jpeg" class="imgA" alt="...">
+      </mat-card-header>
+    </mat-card>
+    <mat-card-content class="example-form">
+      <form>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput class="right" matInput placeholder="Nombre de la empresa: " name="BusinessName" #BusinessName="ngModel" [(ngModel)]="business.BusinessName">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <input matInput class="right" matInput placeholder="País: " name="BusinessCountry" #BusinessCountry="ngModel" [(ngModel)]="business.BusinessCountry">
+        </mat-form-field>
+        <br>
+        <label class="example-full-width" matInput placeholder="Logo: ">Logo:</label>
+        <input class="example-full-width" type="file" placeholder="..." text="..." name="BusinessLogo" #BusinessLogo="ngModel" [(ngModel)]="business.BusinessLogo">
+        <br>
+        <br>
+        <br>
+        <button mat-raised-button color="warn" (click)="enterBusiness()" class="button">Agregar Empresa</button>
+        <br>
+        <br>
+      </form>
+    </mat-card-content>
+
+
+  </div>
+
+</body>
