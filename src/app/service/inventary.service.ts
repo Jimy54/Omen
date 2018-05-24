@@ -4,12 +4,25 @@ import { Observable } from "rxjs/Observable";
 import { Inventary } from "../models/inventary.model";
 import { SendToken } from "./SendToken.service";
 import "rxjs/add/operator/map";
+import { AuthService } from "./auth-service.service";
 @Injectable()
 export class InventaryService {
-  constructor(private http: HttpClient, private token: SendToken) {}
-
-  url = "http://localhost:4120/inventary/listInventaries";
-  url2 = "http://localhost:4120/inventary/listInventaries2";
+  identity_id;
+  url;
+  url2;
+  constructor(
+    private http: HttpClient,
+    private token: SendToken,
+    private userService: AuthService
+  ) {
+    this.identity_id = this.userService.getIdentity();
+    this.url =
+      "http://localhost:4120/inventary/listInventaries/" +
+      this.identity_id.businessID;
+    this.url2 =
+      "http://localhost:4120/inventary/listInventaries2/" +
+      this.identity_id.businessID;
+  }
 
   getInventary(): Observable<Inventary[]> {
     return this.http.get<Inventary[]>(this.url, {

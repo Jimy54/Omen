@@ -86,6 +86,7 @@ import { StatisticsComponent } from "./statistics/statistics.component";
 import { MovesService } from "./service/moves.service";
 import { MoveEditComponent } from "./move-edit/move-edit.component";
 import { MoveDeleteComponent } from "./move-delete/move-delete.component";
+import { ToastServiceService } from "./service/toast-service.service";
 //Themes Angular
 
 @NgModule({
@@ -171,6 +172,7 @@ import { MoveDeleteComponent } from "./move-delete/move-delete.component";
     SendToken,
     MovesService,
     FormBuilder,
+    ToastServiceService,
     BusinessService,
     BranchOfficeInventaryService
   ],

@@ -50,7 +50,7 @@
       </form>
     </mat-card-content>
 
-    <button (click)="enterInvoice()">Agregar</button>
+    <button mat-raised-button color="warn" (click)="enterInvoice()">Agregar</button>
 
   </div>
 
@@ -68,28 +68,36 @@
 
     <thead class="dataTable">
       <tr class="header">
-        <th style="width: 3%">Cantidad</th>
         <th style="width: 3%">Descripción</th>
+        <th style="width: 3%">Cantidad</th>
         <th style="width: 3%">Precio Unitario</th>
         <th style="width: 3%">Descuento</th>
         <th style="width: 3%">Total</th>
       </tr>
     </thead>
     <tr class="trStyle">
-      <td>
-        <mat-form-field>
-          <input matInput placeholder="Cantidad" class="textArea" [(ngModel)]="Quantity" name="Quantity" type="number">
-        </mat-form-field>
-      </td>
+
 
       <td>
 
         <mat-form-field class="select1">
-          <mat-select placeholder="Producto" [(ngModel)]="InventaryID" name="InventaryID">
+          <mat-select placeholder="Producto" [(ngModel)]="InventaryID" name="InventaryID" (change)="selectPrice(InventaryID)">
             <mat-option *ngFor="let provider of _postArray" value="{{provider.InventaryID}}">{{provider.InventaryDescription}}</mat-option>
           </mat-select>
         </mat-form-field>
       </td>
+
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Cantidad" class="textArea" (keyup)="selectQuantity(InventaryID)" [(ngModel)]="Quantity" name="Quantity"
+            type="number">
+        </mat-form-field>
+      </td>
+
+
+
+
+
       <td>
         <mat-form-field>
           <input matInput placeholder="Price" class="textArea" [(ngModel)]="Price" name="Price" type="number">
@@ -99,20 +107,22 @@
       <td>
         <mat-form-field>
           <input matInput placeholder="Descuento" class="textArea" [(ngModel)]="Discount" name="Discount" type="number">
+          <span matSuffix>%&nbsp;</span>
         </mat-form-field>
       </td>
 
       <td>
-        <mat-form-field>
-          <input matInput placeholder="SubTotal" class="textArea" value="{{Quantity * Price -Discount}}" [(ngModel)]="SubTotal" name="SubTotal"
-            type="number">
+        <mat-form-field *ngIf="validation">
+
+          <input matInput placeholder="SubTotal" class="textArea" type="number" (input)="SubTotal=$event.target.value" [value]="Quantity * Price-(Quantity * Price * Discount/100)">
+
         </mat-form-field>
       </td>
     </tr>
 
 
   </table>
-  <button mat-raised-button color="warn" class="button" (click)="enterInvoiceDetaill()">Agregar Factura</button>
+  <button mat-raised-button color="warn" class="button " (click)="enterInvoiceDetaill()" [disabled]="!validation">Agregar Factura</button>
 
 
 </body>

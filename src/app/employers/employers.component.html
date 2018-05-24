@@ -1,12 +1,12 @@
 <body>
-  <mat-toolbar>
+  <mat-toolbar color="warn">
     <span class="example-spacer1"></span>
 
     <h1 class="title">Empleados</h1>
 
     <span class="example-spacer"></span>
 
-    <button class="float-right" mat-fab color="warn" id="add" (click)="EnterDialog()">
+    <button class="float-right" mat-fab style="backgroundColor:black;" id="add" (click)="EnterDialog()">
       <i class="material-icons">library_add</i>
     </button>
 
@@ -45,7 +45,7 @@
         </tr>
       </thead>
 
-      <tr *ngFor="let employee of _postArray">
+      <tr *ngFor="let employee of _postArray" class="trTable">
         <td>{{employee.EmployeeName}}</td>
         <td>{{employee.EmployeePhone}}</td>
         <td>{{employee.EmployeeAddress}}</td>

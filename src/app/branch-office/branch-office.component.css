@@ -7,7 +7,9 @@ h1 {
 button {
   margin-left: 25px;
 }
-
+.trTable{
+  background-color: rgba(138, 138, 138, 0.13);
+}
 #add {
   float: right;
 }
@@ -19,11 +21,12 @@ table {
 
 thead {
   color: white;
-  background-color: #b71c1c;
+background-color: rgb(85, 85, 85);
 }
 
 body {
-  overflow: hidden;
+  font-family: "Questrial", sans-serif;
+  background-color: #ececec;
 }
 
 input[type="text"] {
@@ -43,6 +46,20 @@ input[type="text"] {
 i {
   cursor: pointer;
 }
+
+/* When the input field gets focus, change its width to 100% */
+input[type="text"]:focus {
+  width: 400px;
+}
+
+input {
+  margin-left: 3%;
+}
+
+.title {
+  font-size: 39px;
+}
+
 
 /* When the input field gets focus, change its width to 100% */
 input[type="text"]:focus {

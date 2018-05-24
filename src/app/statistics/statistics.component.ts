@@ -44,7 +44,10 @@ export class StatisticsComponent implements OnInit {
                 "#5ab66e",
                 "#51b0e3",
                 "#469e81",
-                "#e4699e"
+                "#e4699e",
+                "#C6FF00",
+                "#E65100",
+                "#FF3D00"
               ],
               backgroundColor: [
                 "#ff5c5c",
@@ -52,7 +55,10 @@ export class StatisticsComponent implements OnInit {
                 "#5ab66e",
                 "#51b0e3",
                 "#469e81",
-                "#e4699e"
+                "#e4699e",
+                "#C6FF00",
+                "#E65100",
+                "#FF3D00"
               ],
               fill: false
             }
@@ -103,7 +109,10 @@ export class StatisticsComponent implements OnInit {
                 "#5ab66e",
                 "#51b0e3",
                 "#469e81",
-                "#e4699e"
+                "#e4699e",
+                "#C6FF00",
+                "#E65100",
+                "#FF3D00"
               ],
               fill: false
             }

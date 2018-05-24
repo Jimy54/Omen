@@ -2,11 +2,18 @@
 <mat-divider></mat-divider>
 <br>
 <form class="unicorn-dark-theme">
-  <mat-form-field class="form" dividerColor="primary">
 
-    <input matInput placeholder="Ingrese el nombre del producto" [(ngModel)]="Description" name="Description">
+  <mat-form-field class="form">
+    <mat-select placeholder="Producto" name="InventaryID" [(ngModel)]="InventaryID">
+      <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryID}}">{{inventary.InventaryDescription}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="form">
+    <mat-select placeholder="Sucursal" name="BranchOfficeID" [(ngModel)]="BranchOfficeID">
+      <mat-option *ngFor="let branchOffice of _postArrayBranchOffice" value="{{branchOffice.BranchOfficeID}}">{{branchOffice.BranchOfficeName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
 
   <mat-form-field class="form">
@@ -25,16 +32,11 @@
     <input class="right" matInput placeholder="Ingrese el codigo de Barra" [(ngModel)]="CodeBar" name="CodeBar">
   </mat-form-field>
 
-  <mat-form-field class="form">
-    <mat-select placeholder="Producto" name="InventaryID" [(ngModel)]="InventaryID">
-      <mat-option *ngFor="let inventary of _postArrayInventary" value="{{inventary.InventaryID}}">{{inventary.InventaryDescription}}</mat-option>
-    </mat-select>
-  </mat-form-field>
 
-  <mat-form-field class="form">
-    <mat-select placeholder="Sucursal" name="BranchOfficeID" [(ngModel)]="BranchOfficeID">
-      <mat-option *ngFor="let branchOffice of _postArrayBranchOffice" value="{{branchOffice.BranchOfficeID}}">{{branchOffice.BranchOfficeName}}</mat-option>
-    </mat-select>
+
+  <mat-form-field class="form" dividerColor="primary">
+
+    <input matInput placeholder="Observaciónes" [(ngModel)]="Description" name="Description">
   </mat-form-field>
 
   <br>

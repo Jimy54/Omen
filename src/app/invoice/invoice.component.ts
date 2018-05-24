@@ -6,6 +6,9 @@ import { SendToken } from "../service/SendToken.service";
 import { MatSnackBar } from "@angular/material";
 import { AuthService } from "../service/auth-service.service";
 import { Invoice } from "../models/invoice.model";
+import { AnimationStyleMetadata } from "@angular/animations";
+import { FormControl } from "@angular/forms";
+import { ToastServiceService } from "../service/toast-service.service";
 
 @Component({
   selector: "app-invoice",
@@ -17,11 +20,13 @@ export class InvoiceComponent implements OnInit {
   identityInvoice;
   invoice: Invoice;
   _postArrayInventary: Inventary[];
+  Inventary;
   constructor(
     private inventaryService: InventaryService,
     private httpClient: HttpClient,
     private token: SendToken,
     private snackBar: MatSnackBar,
+    private toastServie: ToastServiceService,
     private userService: AuthService
   ) {
     this.identity_id = this.userService.getIdentity();
@@ -39,6 +44,7 @@ export class InvoiceComponent implements OnInit {
   ClientNit;
   InvoiceDate;
 
+  InventaryControl = new FormControl("red");
   addInput() {
     this.i = this.i + 1;
 
@@ -80,11 +86,12 @@ export class InvoiceComponent implements OnInit {
     });
   }
   Quantity;
+  Quantity2;
   InventaryID;
   Price;
+  Discount = 0;
   SubTotal;
-  Discount;
-
+  validation: boolean = true;
   enterInvoiceDetaill() {
     this.httpClient
       .post(
@@ -92,7 +99,10 @@ export class InvoiceComponent implements OnInit {
         {
           Quantity: this.Quantity,
           Discount: this.Discount,
-          SubTotal: this.SubTotal,
+          Price: this.Price,
+          SubTotal:
+            this.Quantity * this.Price -
+            this.Quantity * this.Price * this.Discount / 100,
           InventaryID: this.InventaryID,
           BusinessID: this.identity_id.businessID,
           InvoiceID: JSON.parse(localStorage.getItem("invoice"))
@@ -102,6 +112,28 @@ export class InvoiceComponent implements OnInit {
       .subscribe(reponse => {
         console.log("Hola");
       });
+  }
+
+  selectPrice(InventaryID) {
+    this.Price = this._postArray.find(x => x.InventaryID == InventaryID).Price;
+    console.log(this.Price);
+  }
+
+  selectQuantity(InventaryID) {
+    this.Quantity2 = this._postArray.find(
+      x => x.InventaryID == InventaryID
+    ).Quantity;
+
+    console.log(this.Quantity2);
+
+    if (this.Quantity > this.Quantity2) {
+      this.validation = false;
+    //  this.toastServie.Warning("Productos no existentes");
+      this.toastServie.Info("Productos no existentes");
+      console.log("No existe la cantidad");
+    } else {
+      this.validation = true;
+    }
   }
 
   getInventaries() {

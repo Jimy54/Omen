@@ -65,7 +65,7 @@ export class InventaryEditComponent implements OnInit {
       .subscribe(result => {
 
         this.getInventaries();
-        this.snackBar.open("Empleado Actualizado", "Aceptar", {
+        this.snackBar.open("Producto Actualizado", "Aceptar", {
           duration: 700
         });
       });

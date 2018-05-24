@@ -29,7 +29,7 @@ export class InventariesComponent implements OnInit {
 
   ngOnInit() {
     const data = {};
-    this.getInventaries()
+    this.getInventaries();
     this.inventaryService.getInventary2().subscribe(res => {
       let hola = res["data"];
       console.log(hola);
@@ -53,6 +53,7 @@ export class InventariesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.getInventaries();
+      JsBarcode(".barcode").init();
     });
   }
 
@@ -74,6 +75,7 @@ export class InventariesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.getInventaries();
+      JsBarcode(".barcode").init();
     });
   }
 
@@ -95,7 +97,9 @@ export class InventariesComponent implements OnInit {
     this.inventaryService
       .getInventary()
       .subscribe(
-        resultArray => (this._postArray = resultArray),
+        resultArray => (
+          (this._postArray = resultArray), JsBarcode(".barcode").init()
+        ),
         error => console.log("Error " + error)
       );
   }
@@ -104,7 +108,7 @@ export class InventariesComponent implements OnInit {
     this.categoryService
       .getCategory()
       .subscribe(
-        resultArray => (this._postArrayCategory = resultArray, JsBarcode(".barcode").init()),
+        resultArray => (this._postArrayCategory = resultArray),
         error => console.log("Error " + error)
       );
   }

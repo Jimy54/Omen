@@ -29,18 +29,21 @@ input {
 
 thead {
   color: white;
-  background-color: #b71c1c;
+  background-color: rgb(85, 85, 85);
 }
 
 body {
   font-family: "Questrial", sans-serif;
+  background-color: #ececec;
 }
 
 table {
   margin-left: 45px;
   margin-right: 25px;
 }
-
+.trTable {
+  background-color: rgba(138, 138, 138, 0.13);
+}
 mat-toolbar {
   color: white;
   margin-left: 45px;

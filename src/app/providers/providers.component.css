@@ -15,11 +15,15 @@ table {
 
 thead {
   color: white;
-  background-color: #b71c1c;
+  background-color: rgb(85, 85, 85);
+}
+.trTable {
+  background-color: rgba(138, 138, 138, 0.13);
 }
 
 body {
-  overflow-x: hidden;
+  font-family: "Questrial", sans-serif;
+  background-color: #ececec;
 }
 
 mat-toolbar {
